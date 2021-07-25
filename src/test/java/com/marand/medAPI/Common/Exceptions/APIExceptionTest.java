@@ -2,7 +2,6 @@ package com.marand.medAPI.Common.Exceptions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.validation.BindingResult;
 
 import java.util.*;
 
@@ -121,4 +120,5 @@ class APIExceptionTest {
             .build()
             .getValidationErrors());
   }
+
 }

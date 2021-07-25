@@ -48,22 +48,6 @@ public class APIException extends RuntimeException {
     return validationErrors;
   }
 
-  @Override
-  public boolean equals(Object other) {
-    if (this.getClass() != other.getClass()) return false;
-    return reflectionEquals(this, other);
-  }
-
-  @Override
-  public String toString() {
-    return ReflectionToStringBuilder.toString(this);
-  }
-
-  @Override
-  public int hashCode() {
-    return HashCodeBuilder.reflectionHashCode(this);
-  }
-
   public static class APIExceptionBuilder {
     private long timestamp = new Date().getTime();
     private int status;

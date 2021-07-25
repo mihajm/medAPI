@@ -39,6 +39,17 @@ class DoctorTest extends BaseEntityTest {
   }
 
   @Test
+  void canBeConstructedWithId() {
+    assertDoesNotThrow(() -> new Doctor(id));
+  }
+
+  @Test
+  void whenConstructedWithId_hasId() {
+    Doctor doctor = new Doctor(id);
+    assertEquals(id, doctor.getId());
+  }
+
+  @Test
   void canBeConstructedWithIdAndDepartment() {
     assertDoesNotThrow(() -> new Doctor(id, department));
   }

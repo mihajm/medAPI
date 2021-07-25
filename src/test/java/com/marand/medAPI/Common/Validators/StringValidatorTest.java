@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
+import java.util.Locale;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringValidatorTest {
@@ -43,6 +45,21 @@ class StringValidatorTest {
                       .isShorterThan(5);
             });
   }
+
+    @Test
+    public void givenValidPatientData_whenValidatorsCalled_DoesNotThrow() {
+        assertDoesNotThrow(
+                () -> {
+                    validator
+                            .validateString("Miha")
+                            .isNotNull()
+                            .isNotEmpty()
+                            .isNotBlank()
+                            .hasPatientNameValidChars()
+                            .isLongerThan(3)
+                            .isShorterThan(5);
+                });
+    }
 
   @Test
   public void givenValidString_hasLengthBetweenReturnsString() {
@@ -145,6 +162,34 @@ class StringValidatorTest {
                 () -> {
                     validator.validateString("123").hasPatientNameValidChars();
                 });
+    }
+
+    @Test
+    public void transformToLower_TransformsStringToLowerCase() {
+      String UpperCaseStr = "ABC";
+        validator.validateString(UpperCaseStr).transformToLower();
+        assertEquals(UpperCaseStr.toLowerCase(Locale.ROOT), validator.getString());
+    }
+
+    @Test
+    public void transformToLower_TransformsStringToUpperCase() {
+        String lowerCaseStr = "abc";
+        validator.validateString(lowerCaseStr).transformToUpper();
+        assertEquals(lowerCaseStr.toUpperCase(Locale.ROOT), validator.getString());
+    }
+
+    @Test
+    public void transformFirstToUpper_TransformsFirstCharToUpperCase() {
+        String name = "abc";
+        validator.validateString(name).transformFirstToUpper();
+        assertEquals("Abc", validator.getString());
+    }
+
+    @Test
+    public void transformFirstToLower_TransformsFirstCharToLowerCase() {
+        String name = "ABC";
+        validator.validateString(name).transformFirstToLower();
+        assertEquals("aBC", validator.getString());
     }
 
 }

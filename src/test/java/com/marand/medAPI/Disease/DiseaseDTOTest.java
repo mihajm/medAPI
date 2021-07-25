@@ -26,17 +26,41 @@ class DiseaseDTOTest extends BaseDTOTest {
 
   @Test
   void canBeConstructedWithNoArgs() {
-    assertDoesNotThrow((ThrowingSupplier<Disease>) Disease::new);
+    assertDoesNotThrow((ThrowingSupplier<DiseaseDTO>) DiseaseDTO::new);
+  }
+
+  @Test
+  void canBeConstructedWithId() {
+    assertDoesNotThrow(() -> new DiseaseDTO(50L));
+  }
+
+  @Test
+  void whenConstructedWithId_hasId() {
+    DiseaseDTO dto = new DiseaseDTO(50L);
+    assertEquals(50L, dto.getId());
   }
 
   @Test
   void canBeConstructedWithName() {
-    assertDoesNotThrow(() -> new Disease("name"));
+    assertDoesNotThrow(() -> new DiseaseDTO("name"));
+  }
+
+  @Test
+  void whenConstructedWithName_hasName() {
+    DiseaseDTO dto = new DiseaseDTO("name");
+    assertEquals("name", dto.getName());
   }
 
   @Test
   void canBeConstructedWithIdAndName() {
-    assertDoesNotThrow(() -> new Disease(50L, "name"));
+    assertDoesNotThrow(() -> new DiseaseDTO(50L, "name"));
+  }
+
+  @Test
+  void whenConstructedWithIdAndName_hasIdAndName() {
+    DiseaseDTO dto = new DiseaseDTO(50L, "name");
+    assertEquals(50L, dto.getId());
+    assertEquals("name", dto.getName());
   }
 
   @Test
