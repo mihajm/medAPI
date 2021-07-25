@@ -2,6 +2,7 @@ package com.marand.medAPI.Common.DTOs;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.marand.medAPI.Common.Objects.BaseDataObjectTest;
 import com.marand.medAPI.Disease.DiseaseDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,13 +10,17 @@ import org.junit.jupiter.api.function.ThrowingSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BaseDTOTest {
+public abstract class BaseDTOTest extends BaseDataObjectTest {
 
-  private BaseDTO dto = new BaseDTO();
+  private BaseDTO dto = createDTO();
+
+  protected BaseDTO createDTO() {
+    return new BaseDTO();
+  }
 
   @BeforeEach
   private void BaseDTOTestSetup() {
-    dto = new BaseDTO();
+    dto = createDTO();
   }
 
   @Test
@@ -77,6 +82,7 @@ public class BaseDTOTest {
   @Test
   void containsIdWhenDeSerialized() throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper();
+    BaseDTO dto = new BaseDTO();
     long id = 50L;
     dto.setId(id);
     String objectString = mapper.writeValueAsString(dto);

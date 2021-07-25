@@ -21,7 +21,11 @@ class PatientDTOTest extends BaseDTOTest {
   private final String lastName = "Mulec";
   private final Set<DiseaseDTO> diseases =
       new HashSet(Collections.singletonList(new DiseaseDTO("good_at_testing")));
-  private PatientDTO dto = new PatientDTO(id, firstName, lastName, diseases);
+  private PatientDTO dto = createDTO();
+
+  protected PatientDTO createDTO() {
+    return new PatientDTO();
+  }
 
   @BeforeEach
   private void patientTestSetup() {

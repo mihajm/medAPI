@@ -2,12 +2,13 @@ package com.marand.medAPI.Common.Entities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.marand.medAPI.Common.Objects.BaseDataObjectTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public abstract class BaseEntityTest {
+public abstract class BaseEntityTest extends BaseDataObjectTest {
 
   BaseEntity entity = createEntity();
 

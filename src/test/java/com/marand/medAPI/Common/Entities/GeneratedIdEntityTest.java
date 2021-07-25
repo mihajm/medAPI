@@ -2,15 +2,17 @@ package com.marand.medAPI.Common.Entities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.marand.medAPI.Common.Objects.BaseDataObject;
+import com.marand.medAPI.Common.Objects.BaseDataObjectTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GeneratedIdEntityTest {
+public abstract class GeneratedIdEntityTest extends BaseDataObjectTest {
 
   GeneratedIdEntity entity = createEntity();
 
-  private GeneratedIdEntity createEntity() {
+  protected GeneratedIdEntity createEntity() {
     return new GeneratedIdEntity();
   }
 
@@ -61,10 +63,11 @@ public class GeneratedIdEntityTest {
   @Test
   void containsIdWhenDeserialized() throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper();
+    GeneratedIdEntity entity = new GeneratedIdEntity();
     long id = 50L;
     entity.setId(id);
     String objectString = mapper.writeValueAsString(entity);
-    GeneratedIdEntity entity = mapper.readValue(objectString, GeneratedIdEntity.class);
-    assertEquals(id, entity.getId());
+    GeneratedIdEntity deserializedEntity = mapper.readValue(objectString, GeneratedIdEntity.class);
+    assertEquals(id, deserializedEntity.getId());
   }
 }

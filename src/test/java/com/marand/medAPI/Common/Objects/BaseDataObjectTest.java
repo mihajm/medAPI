@@ -6,15 +6,19 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BaseDataObjectTest {
+public abstract class BaseDataObjectTest {
 
 
     private long id = 10L;
     private BaseDataObject entity;
 
+    protected BaseDataObject createEntity() {
+        return new MockEntity(id);
+    }
+
     @BeforeEach
     private void BaseDataObjectTestSetup() {
-        entity = new MockEntity(id);
+        entity = createEntity();
     }
 
     @Test
@@ -25,20 +29,21 @@ class BaseDataObjectTest {
     @Test
     void equals_ComparesFields_IfSameClass() {
         assertFalse(entity.equals(new MockEntity(5L)));
-        assertTrue(entity.equals(new MockEntity(10L)));
+        assertTrue(entity.equals(createEntity()));
     }
 
     @Test
     void toString_returnsAllFieldsAndValues() {
+        System.out.println(entity.toString());
         String entityString = entity.toString();
         assertTrue(entityString.contains("id"));
-        assertTrue(entityString.contains(String.valueOf(id)));
+        assertTrue(entityString.contains(String.valueOf(entity.getId())));
     }
 
     @Test
     void hashCode_returnsHashBasedOnFieldValues() {
         int hashCode = entity.hashCode();
-        entity.setId(50);
+        entity.setId(5000);
         assertNotEquals(hashCode, entity.hashCode());
     }
 

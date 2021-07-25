@@ -22,7 +22,7 @@ class ReportTest extends GeneratedIdEntityTest {
     report = createEntity();
   }
 
-  private Report createEntity() {
+  protected Report createEntity() {
     return new Report(entityName, entityId, message);
   }
 

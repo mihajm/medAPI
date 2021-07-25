@@ -3,6 +3,7 @@ package com.marand.medAPI.Disease;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.marand.medAPI.Common.DTOs.BaseDTOTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
@@ -10,7 +11,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiseaseDTOTest extends BaseDTOTest {
 
-  private DiseaseDTO dto = new DiseaseDTO();
+  private DiseaseDTO dto = createDTO();
+
+  protected DiseaseDTO createDTO() {
+    return new DiseaseDTO();
+  }
+
+  @BeforeEach
+  private void DiseaseDTOTestSetup() {
+    dto = createDTO();
+  }
 
   @Test
   void hasAName() {
