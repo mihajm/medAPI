@@ -3,16 +3,18 @@ package com.marand.medAPI.Common.ExceptionHandlers;
 import com.marand.medAPI.Common.Exceptions.APIException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 
 public class ControllerExceptionHandler {
 
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler({MethodArgumentNotValidException.class})
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
   APIException handleValidationException(
       MethodArgumentNotValidException exception, HttpServletRequest request) {
     return new APIException.APIExceptionBuilder()
@@ -23,19 +25,8 @@ public class ControllerExceptionHandler {
         .build();
   }
 
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  @ExceptionHandler({IllegalArgumentException.class})
-  APIException handleIllegalArgumentException(
-      IllegalArgumentException exception, HttpServletRequest request) {
-    return new APIException.APIExceptionBuilder()
-        .withStatus(400)
-        .hasMessage(exception.getMessage())
-        .atUrl(request.getServletPath())
-        .build();
-  }
-
-  @ResponseStatus(HttpStatus.NOT_FOUND)
   @ExceptionHandler({EntityNotFoundException.class})
+  @ResponseStatus(HttpStatus.NOT_FOUND)
   APIException handleNotFoundException(
       EntityNotFoundException exception, HttpServletRequest request) {
     return new APIException.APIExceptionBuilder()

@@ -34,9 +34,7 @@ public abstract class BaseController<E extends BaseDataObject, DTO extends BaseD
 
   @ApiOperation(value = "Saves or updates if entity already exists")
   @PostMapping("")
-  public E save(@Valid @RequestBody DTO dto) {
-    return service.save(dto);
-  }
+  public E save(@Valid @RequestBody DTO dto) { return service.save(dto); }
 
   @ApiOperation(value = "If id is valid, removes entity with that id")
   @DeleteMapping("/{id}")

@@ -11,11 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
@@ -29,6 +28,10 @@ class DoctorControllerTest extends BaseControllerTest<Doctor, DoctorDTO> {
       new HashSet(Collections.singletonList(new PatientDTO(55L, "Miha", "Mulec", diseases)));
   private DoctorDTO dto = createDTO();
   private DoctorService service;
+
+  private String error_notNull = "Department cannot be blank, empty or null";
+  private String error_wrongSize = "Department must be longer than 1 and shorter than 255 characters";
+  private String error_charMismatch = "Department can only contain lowercase letters with words separated with either an underscore _ or a dash -";
 
   @Autowired
   protected DoctorControllerTest(DoctorService service) {
@@ -82,9 +85,53 @@ class DoctorControllerTest extends BaseControllerTest<Doctor, DoctorDTO> {
   }
 
   @Test
+  public void givenNullDepartment_whenPostCalled_returnsValidationError() {
+    dto.setDepartment(null);
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+    assertTrue(((String) resp.get("message")).contains("ValidationError"));
+  }
+
+  @Test
+  void givenNullDepartment_whenPostCalled_returnsCorrectValidationErrors() {
+    dto.setDepartment(null);
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+
+    LinkedHashMap errors = (LinkedHashMap) resp.get("validationErrors");
+    List<String> expectedErrors = List.of(error_notNull);
+
+    errors.forEach((fieldName, messages) -> {
+      for (String err : expectedErrors) {
+        assertTrue(((List<String>) messages).contains(err));
+      }
+    });
+  }
+
+  @Test
   public void givenEmptyDepartment_whenPostCalled_returnsBadRequest() {
     dto.setDepartment("");
     assertEquals(HttpStatus.BAD_REQUEST, postEntity(dto).getStatusCode());
+  }
+
+  @Test
+  public void givenEmptyDepartment_whenPostCalled_returnsValidationError() {
+    dto.setDepartment("");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+    assertTrue(((String) resp.get("message")).contains("ValidationError"));
+  }
+
+  @Test
+  void givenEmptyDepartment_whenPostCalled_returnsCorrectValidationErrors() {
+    dto.setDepartment("");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+
+    LinkedHashMap errors = (LinkedHashMap) resp.get("validationErrors");
+    List<String> expectedErrors = List.of(error_notNull, error_wrongSize, error_charMismatch);
+
+    errors.forEach((fieldName, messages) -> {
+      for (String err : expectedErrors) {
+        assertTrue(((List<String>) messages).contains(err));
+      }
+    });
   }
 
   @Test
@@ -94,9 +141,53 @@ class DoctorControllerTest extends BaseControllerTest<Doctor, DoctorDTO> {
   }
 
   @Test
+  public void givenBlankDepartment_whenPostCalled_returnsValidationError() {
+    dto.setDepartment(" ");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+    assertTrue(((String) resp.get("message")).contains("ValidationError"));
+  }
+
+  @Test
+  void givenBlankDepartment_whenPostCalled_returnsCorrectValidationErrors() {
+    dto.setDepartment(" ");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+
+    LinkedHashMap errors = (LinkedHashMap) resp.get("validationErrors");
+    List<String> expectedErrors = List.of(error_notNull, error_charMismatch);
+
+    errors.forEach((fieldName, messages) -> {
+      for (String err : expectedErrors) {
+        assertTrue(((List<String>) messages).contains(err));
+      }
+    });
+  }
+
+  @Test
   public void givenDepartmentLargerThan255Chars_whenPostCalled_returnsBadRequest() {
     dto.setDepartment("a".repeat(256));
     assertEquals(HttpStatus.BAD_REQUEST, postEntity(dto).getStatusCode());
+  }
+
+  @Test
+  public void givenDepartmentLargerThan255Chars_whenPostCalled_returnsValidationError() {
+    dto.setDepartment("a".repeat(256));
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+    assertTrue(((String) resp.get("message")).contains("ValidationError"));
+  }
+
+  @Test
+  void givenDepartmentLargerThan255Chars_whenPostCalled_returnsCorrectValidationErrors() {
+    dto.setDepartment("a".repeat(256));
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+
+    LinkedHashMap errors = (LinkedHashMap) resp.get("validationErrors");
+    List<String> expectedErrors = List.of(error_wrongSize);
+
+    errors.forEach((fieldName, messages) -> {
+      for (String err : expectedErrors) {
+        assertTrue(((List<String>) messages).contains(err));
+      }
+    });
   }
 
   @Test
@@ -106,9 +197,53 @@ class DoctorControllerTest extends BaseControllerTest<Doctor, DoctorDTO> {
   }
 
   @Test
+  public void givenDepartmentWithNonLetterChars_whenPostCalled_returnsValidationError() {
+    dto.setDepartment("123");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+    assertTrue(((String) resp.get("message")).contains("ValidationError"));
+  }
+
+  @Test
+  void givenDepartmentWithNonLetterChars_whenPostCalled_returnsCorrectValidationErrors() {
+    dto.setDepartment("123");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+
+    LinkedHashMap errors = (LinkedHashMap) resp.get("validationErrors");
+    List<String> expectedErrors = List.of(error_charMismatch);
+
+    errors.forEach((fieldName, messages) -> {
+      for (String err : expectedErrors) {
+        assertTrue(((List<String>) messages).contains(err));
+      }
+    });
+  }
+
+  @Test
   public void givenDepartmentWithUpperCasedCharacters_whenPostCalled_returnsBadRequest() {
     dto.setDepartment("ABC");
     assertEquals(HttpStatus.BAD_REQUEST, postEntity(dto).getStatusCode());
+  }
+
+  @Test
+  public void givenDepartmentWithUpperCasedCharacters_whenPostCalled_returnsValidationError() {
+    dto.setDepartment("ABC");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+    assertTrue(((String) resp.get("message")).contains("ValidationError"));
+  }
+
+  @Test
+  void givenDepartmentWithUpperCasedCharacters_whenPostCalled_returnsCorrectValidationErrors() {
+    dto.setDepartment("ABC");
+    LinkedHashMap resp = postBadEntity(dto).getBody();
+
+    LinkedHashMap errors = (LinkedHashMap) resp.get("validationErrors");
+    List<String> expectedErrors = List.of(error_charMismatch);
+
+    errors.forEach((fieldName, messages) -> {
+      for (String err : expectedErrors) {
+        assertTrue(((List<String>) messages).contains(err));
+      }
+    });
   }
 
   @Test

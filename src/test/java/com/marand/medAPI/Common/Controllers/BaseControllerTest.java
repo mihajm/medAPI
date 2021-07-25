@@ -10,6 +10,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,8 +43,16 @@ public abstract class BaseControllerTest<E extends BaseDataObject, DTO extends B
     return testRestTemplate.postForEntity(getURI(), dto, getClazz());
   }
 
+  protected ResponseEntity<LinkedHashMap> postBadEntity(DTO dto) {
+    return testRestTemplate.postForEntity(getURI(), dto, LinkedHashMap.class);
+  }
+
   protected ResponseEntity<E> getEntity(long id) {
     return testRestTemplate.getForEntity(getURI() + "/" + id, getClazz());
+  }
+
+  protected ResponseEntity<LinkedHashMap> getBadEntity(long id) {
+    return testRestTemplate.getForEntity(getURI() + "/" + id, LinkedHashMap.class);
   }
 
   protected ResponseEntity<E[]> getAllEntities() {
@@ -84,6 +93,17 @@ public abstract class BaseControllerTest<E extends BaseDataObject, DTO extends B
   public void whenGetOneCalled_returnsEntity() {
     ResponseEntity<E> response = postEntity();
     assertEquals(response.getBody(), getEntity(getId(response)).getBody());
+  }
+
+  @Test
+  public void givenInvalidId_whenGetOneCalled_returnsStatusNotFound() {
+    assertEquals(HttpStatus.NOT_FOUND, getEntity(500).getStatusCode());
+  }
+
+  @Test
+  public void givenInvalidId_whenGetOneCalled_returnsCorrectErrorMessage() {
+    LinkedHashMap resp = getBadEntity(500).getBody();
+    assertTrue(((String) resp.get("message")).contains("No entity with this id found"));
   }
 
   @Test

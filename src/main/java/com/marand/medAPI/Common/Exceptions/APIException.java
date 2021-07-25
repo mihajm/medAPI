@@ -5,9 +5,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import java.util.Date;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
@@ -18,7 +16,7 @@ public class APIException extends RuntimeException {
   private int status;
   private String message;
   private String url;
-  private Map<String, String> validationErrors;
+  private Map<String, List<String>> validationErrors;
 
   public APIException() {}
 
@@ -46,7 +44,7 @@ public class APIException extends RuntimeException {
     return url;
   }
 
-  public Map<String, String> getValidationErrors() {
+  public Map<String, List<String>> getValidationErrors() {
     return validationErrors;
   }
 
@@ -71,7 +69,7 @@ public class APIException extends RuntimeException {
     private int status;
     private String message;
     private String url;
-    private Map<String, String> validationErrors;
+    private Map<String, List<String>> validationErrors;
 
     public APIExceptionBuilder atTimestamp(long timestamp) {
       this.timestamp = timestamp;
@@ -93,23 +91,36 @@ public class APIException extends RuntimeException {
       return this;
     }
 
-    public APIExceptionBuilder withValidationErrors(Map<String, String> validationErrors) {
+    public APIExceptionBuilder withValidationErrors(Map<String, List<String>> validationErrors) {
       this.validationErrors = validationErrors;
       return this;
     }
 
     public APIExceptionBuilder withErrorMapFromException(BindingResult exceptionResult) {
-      return withValidationErrors(
-          exceptionResult.getFieldErrors().stream()
-              .collect(Collectors.toMap(FieldError::getField, this::getDefaultMessage)));
+      Map<String, List<String>> errorMap = new HashMap();
+
+      getUniqueFields(exceptionResult).forEach((String fieldName) -> {
+        errorMap.put(fieldName, getFieldErrors(exceptionResult, fieldName));
+      });
+
+      return withValidationErrors(errorMap);
     }
 
     public APIException build() {
       return new APIException(this);
     }
 
-    private String getDefaultMessage(FieldError error) {
-      return Objects.requireNonNull(error.getDefaultMessage());
+    private List<String> getFieldErrors(BindingResult exceptionResult, String key) {
+      return exceptionResult.getFieldErrors(key).stream()
+              .map(FieldError::getDefaultMessage)
+              .collect(Collectors.toList());
+    }
+
+
+    private Set<String> getUniqueFields(BindingResult exceptionResult) {
+      return exceptionResult.getFieldErrors().stream()
+          .map(FieldError::getField)
+          .collect(Collectors.toSet());
     }
   }
 }
