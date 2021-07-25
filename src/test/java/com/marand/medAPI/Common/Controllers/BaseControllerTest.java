@@ -100,6 +100,7 @@ public abstract class BaseControllerTest<E extends BaseDataObject, DTO extends B
   public void whenGetAllCalled_returnsListOfEntities() {
     postEntity();
     ResponseEntity<E[]> response = getAllEntities();
+    assertFalse(response.getBody().length <= 0);
     for (E entity : Objects.requireNonNull(response.getBody())) {
       assertNotNull(entity);
     }

@@ -15,7 +15,7 @@ public class ControllerExceptionHandler {
   @ExceptionHandler({MethodArgumentNotValidException.class})
   APIException handleValidationException(
       MethodArgumentNotValidException exception, HttpServletRequest request) {
-    return new APIException.APIErrorBuilder()
+    return new APIException.APIExceptionBuilder()
         .withStatus(400)
         .hasMessage("ValidationError")
         .atUrl(request.getServletPath())
@@ -27,7 +27,7 @@ public class ControllerExceptionHandler {
   @ExceptionHandler({IllegalArgumentException.class})
   APIException handleIllegalArgumentException(
       IllegalArgumentException exception, HttpServletRequest request) {
-    return new APIException.APIErrorBuilder()
+    return new APIException.APIExceptionBuilder()
         .withStatus(400)
         .hasMessage(exception.getMessage())
         .atUrl(request.getServletPath())
@@ -38,7 +38,7 @@ public class ControllerExceptionHandler {
   @ExceptionHandler({EntityNotFoundException.class})
   APIException handleNotFoundException(
       EntityNotFoundException exception, HttpServletRequest request) {
-    return new APIException.APIErrorBuilder()
+    return new APIException.APIExceptionBuilder()
         .withStatus(404)
         .hasMessage("No entity with this id found")
         .atUrl(request.getServletPath())

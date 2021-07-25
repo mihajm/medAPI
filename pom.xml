@@ -49,13 +49,40 @@
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.pitest</groupId>
+			<artifactId>pitest-maven</artifactId>
+			<version>1.6.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pitest</groupId>
+			<artifactId>pitest-junit5-plugin</artifactId>
+			<version>0.14</version>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.6.7</version>
+				<configuration>
+					<verbose>true</verbose>
+					<targetClasses>
+						<param>com.marand.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>com.marand.*</param>
+					</targetTests>
+					<outputFormats>
+						<outputFormat>HTML</outputFormat>
+					</outputFormats>
+					<testPlugin>junit5</testPlugin>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

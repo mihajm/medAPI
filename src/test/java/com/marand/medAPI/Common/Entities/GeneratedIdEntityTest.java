@@ -32,6 +32,12 @@ public class GeneratedIdEntityTest {
   }
 
   @Test
+  void whenConstructedWithId_hasId() {
+    long id = 10L;
+    assertEquals(id, new GeneratedIdEntity(id).getId());
+  }
+
+  @Test
   void isSerializable() {
     ObjectMapper mapper = new ObjectMapper();
     assertTrue(mapper.canSerialize(BaseEntity.class));

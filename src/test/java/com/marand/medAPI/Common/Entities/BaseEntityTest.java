@@ -32,6 +32,12 @@ public abstract class BaseEntityTest {
   }
 
   @Test
+  void whenConstructedWithId_HasId() {
+    long id = 10L;
+    assertEquals(id, new BaseEntity(id).getId());
+  }
+
+  @Test
   void isSerializable() {
     ObjectMapper mapper = new ObjectMapper();
     assertTrue(mapper.canSerialize(BaseEntity.class));

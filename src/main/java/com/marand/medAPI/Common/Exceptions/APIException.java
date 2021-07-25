@@ -22,7 +22,7 @@ public class APIException extends RuntimeException {
 
   public APIException() {}
 
-  private APIException(APIErrorBuilder builder) {
+  private APIException(APIExceptionBuilder builder) {
     this.timestamp = builder.timestamp;
     this.status = builder.status;
     this.message = builder.message;
@@ -66,39 +66,39 @@ public class APIException extends RuntimeException {
     return HashCodeBuilder.reflectionHashCode(this);
   }
 
-  public static class APIErrorBuilder {
+  public static class APIExceptionBuilder {
     private long timestamp = new Date().getTime();
     private int status;
     private String message;
     private String url;
     private Map<String, String> validationErrors;
 
-    public APIErrorBuilder atTimestamp(long timestamp) {
+    public APIExceptionBuilder atTimestamp(long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
 
-    public APIErrorBuilder withStatus(int status) {
+    public APIExceptionBuilder withStatus(int status) {
       this.status = status;
       return this;
     }
 
-    public APIErrorBuilder hasMessage(String message) {
+    public APIExceptionBuilder hasMessage(String message) {
       this.message = message;
       return this;
     }
 
-    public APIErrorBuilder atUrl(String url) {
+    public APIExceptionBuilder atUrl(String url) {
       this.url = url;
       return this;
     }
 
-    public APIErrorBuilder withValidationErrors(Map<String, String> validationErrors) {
+    public APIExceptionBuilder withValidationErrors(Map<String, String> validationErrors) {
       this.validationErrors = validationErrors;
       return this;
     }
 
-    public APIErrorBuilder withErrorMapFromException(BindingResult exceptionResult) {
+    public APIExceptionBuilder withErrorMapFromException(BindingResult exceptionResult) {
       return withValidationErrors(
           exceptionResult.getFieldErrors().stream()
               .collect(Collectors.toMap(FieldError::getField, this::getDefaultMessage)));
