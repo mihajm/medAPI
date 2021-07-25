@@ -14,11 +14,6 @@ public class StringValidator {
     this.string = string;
   }
 
-  public StringValidator(String string, boolean valid) {
-    this.string = string;
-    this.valid = valid;
-  }
-
   private void throwException(String message) throws IllegalArgumentException {
     throw new IllegalArgumentException(message);
   }

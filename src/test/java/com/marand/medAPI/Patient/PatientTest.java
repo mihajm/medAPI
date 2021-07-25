@@ -49,8 +49,24 @@ class PatientTest extends BaseEntityTest {
   }
 
   @Test
+  void whenConstructedWithIdFirstANdLastNames_hasAllSet() {
+    Patient patient = new Patient(id, firstName, lastName);
+    assertEquals(id, patient.getId());
+    assertEquals(firstName, patient.getFirstName());
+    assertEquals(lastName, patient.getLastName());
+  }
+
+  @Test
   void canBeConstructedWithIdFirstANdLastNamesAndDiseases() {
     assertDoesNotThrow(() -> new Patient(50L, "Miha", "Mulec", Collections.emptySet()));
+  }
+
+  @Test
+  void whenConstructedWithIdFirstANdLastNamesAndDiseases_hasAllSet() {
+    assertEquals(id, patient.getId());
+    assertEquals(firstName, patient.getFirstName());
+    assertEquals(lastName, patient.getLastName());
+    assertEquals(diseases, patient.getDiseases());
   }
 
   @Test

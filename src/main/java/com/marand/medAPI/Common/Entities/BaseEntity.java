@@ -9,9 +9,9 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity extends BaseDataObject {
   @Id private long id;
 
-  protected BaseEntity() {}
+  public BaseEntity() {}
 
-  protected BaseEntity(long id) {
+  public BaseEntity(long id) {
     setId(id);
   }
 

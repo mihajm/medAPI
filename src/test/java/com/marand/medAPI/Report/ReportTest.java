@@ -41,7 +41,6 @@ class ReportTest extends GeneratedIdEntityTest {
     assertDoesNotThrow(() -> new Report(new Disease(50L, "a_disease"), message));
   }
 
-
   @Test
   void whenConstructedHasStartTime() {
     assertNotNull(report.getStartTime());
@@ -50,9 +49,12 @@ class ReportTest extends GeneratedIdEntityTest {
   @Test
   void whenConstructedWithEntityHasCorrectIdAndName() {
     Disease disease = new Disease (50L, "a_disease");
+
     Report report = new Report(disease, message);
+
     assertEquals(disease.getId(), report.getEntityId());
     assertTrue(report.getEntityName().contains("Disease"));
+    assertEquals(message, report.getMessage());
   }
 
   @Test

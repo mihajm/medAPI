@@ -222,6 +222,12 @@ class FieldValidatorTest {
   }
 
   @Test
+  void givenCollection_isValidSingleton_returnsFalse() {
+    List<DiseaseDTO> diseases = List.of(new DiseaseDTO("name"));
+    assertFalse(isReflectableSingleton(diseases));
+  }
+
+  @Test
   void givenNull_isValidSingleton_returnsFalse() {
     assertFalse(isReflectableSingleton(null));
   }

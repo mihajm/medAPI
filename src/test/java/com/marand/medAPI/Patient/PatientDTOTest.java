@@ -49,8 +49,24 @@ class PatientDTOTest extends BaseDTOTest {
   }
 
   @Test
+  void whenConstructedWithIdFirstANdLastNames_hasAllSet() {
+    PatientDTO dto = new PatientDTO(id, firstName, lastName);
+    assertEquals(id, dto.getId());
+    assertEquals(firstName, dto.getFirstName());
+    assertEquals(lastName, dto.getLastName());
+  }
+
+  @Test
   void canBeConstructedWithIdFirstANdLastNamesAndDiseases() {
     assertDoesNotThrow(() -> new PatientDTO(50L, "Miha", "Mulec", Collections.emptySet()));
+  }
+
+  @Test
+  void whenConstructedWithIdFirstANdLastNamesAndDiseases_hasAllSet() {
+    assertEquals(id, dto.getId());
+    assertEquals(firstName, dto.getFirstName());
+    assertEquals(lastName, dto.getLastName());
+    assertEquals(diseases, dto.getDiseases());
   }
 
   @Test

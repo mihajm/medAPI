@@ -2,6 +2,7 @@ package com.marand.medAPI.Common.Entities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +13,11 @@ public abstract class BaseEntityTest {
 
   protected BaseEntity createEntity() {
     return new BaseEntity();
+  }
+
+  @BeforeEach
+  private void BaseEntityTestSetup() {
+    entity = createEntity();
   }
 
   @Test

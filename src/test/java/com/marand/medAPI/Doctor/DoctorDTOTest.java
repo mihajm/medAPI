@@ -50,8 +50,22 @@ class DoctorDTOTest extends BaseDTOTest {
   }
 
   @Test
+  void whenConstructedWithIdAndDepartment_hasIdAndDepartment() {
+    DoctorDTO dto = new DoctorDTO(id, department);
+    assertEquals(id, dto.getId());
+    assertEquals(department, dto.getDepartment());
+  }
+
+  @Test
   void canBeConstructedWithIdAndDepartmentAndPatients() {
     assertDoesNotThrow(this::createDto);
+  }
+
+  @Test
+  void whenConstructedWithIdAndDepartmentAndPatients_hasIdAndDepartmentAndPatients() {
+    assertEquals(id, dto.getId());
+    assertEquals(department, dto.getDepartment());
+    assertEquals(patients, dto.getPatients());
   }
 
   @Test

@@ -89,18 +89,6 @@ public class FieldUtils {
         .setPropertyValue(fieldName, DTOs.stream().map(service::save).collect(Collectors.toSet()));
   }
 
-  private static <E extends BaseDataObject, DTO extends BaseDTO> void writeEntityArray(
-      E target, String fieldName, DTO[] DTOs, UpdaterService<E, DTO> service) {
-    PropertyAccessorFactory.forBeanPropertyAccess(target)
-        .setPropertyValue(
-            fieldName, Arrays.stream(DTOs).map(service::save).collect(Collectors.toSet()));
-  }
-
-  private static <E extends BaseDataObject, DTO extends BaseDTO> void writeEntitySingleton(
-      E target, String fieldName, DTO dto, UpdaterService<E, DTO> service) {
-    PropertyAccessorFactory.forBeanPropertyAccess(target)
-        .setPropertyValue(fieldName, service.save(dto));
-  }
 
   @SuppressWarnings("unchecked")
   public static <E extends BaseDataObject, DTO extends BaseDTO> void writeEntityField(
@@ -109,9 +97,5 @@ public class FieldUtils {
     if (value.isEmpty()) return;
     if (isReflectableCollection(value.get()))
       writeEntityCollection(target, field.getName(), (Collection<DTO>) value.get(), service);
-    if (isReflectableArray(value.get()))
-      writeEntityArray(target, field.getName(), (DTO[]) value.get(), service);
-    if (isReflectableSingleton(value.get()))
-      writeEntitySingleton(target, field.getName(), (DTO) value.get(), service);
   }
 }

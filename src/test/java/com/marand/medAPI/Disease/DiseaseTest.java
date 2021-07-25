@@ -41,8 +41,24 @@ class DiseaseTest extends GeneratedIdEntityTest {
   }
 
   @Test
+  void whenConstructedWithName_hasName() {
+    String name = "name";
+    Disease disease = new Disease(name);
+    assertEquals(name, disease.getName());
+  }
+
+  @Test
   void canBeConstructedWithIdAndName() {
     assertDoesNotThrow(() -> new Disease(50L, "name"));
+  }
+
+  @Test
+  void whenConstructedWithIdAndName_hasIdAndName() {
+    long id = 50L;
+    String name = "name";
+    Disease disease = new Disease(id, name);
+    assertEquals(id, disease.getId());
+    assertEquals(name, disease.getName());
   }
 
   @Test

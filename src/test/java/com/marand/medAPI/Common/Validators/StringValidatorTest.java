@@ -2,6 +2,8 @@ package com.marand.medAPI.Common.Validators;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.api.function.ThrowingSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +18,18 @@ class StringValidatorTest {
   }
 
   @Test
+  public void canBeConstructedWithoutArgs() {
+      assertDoesNotThrow((ThrowingSupplier<StringValidator>) StringValidator::new);
+  }
+
+
+    @Test
+    public void whenConstructedWithTestString_hasStringSet() {
+        assertEquals(testString, validator.getString());
+    }
+
+
+    @Test
   public void givenValidData_whenValidatorsCalled_DoesNotThrow() {
     assertDoesNotThrow(
             () -> {
@@ -28,6 +42,13 @@ class StringValidatorTest {
                       .isLongerThan(3)
                       .isShorterThan(5);
             });
+  }
+
+  @Test
+  public void givenValidString_hasLengthBetweenReturnsString() {
+      String validatedString = validator.validateString("ab").hasLengthBetween(1, 5);
+      assertNotNull(validatedString);
+      assertEquals("ab", validatedString);
   }
 
   @Test
@@ -98,4 +119,32 @@ class StringValidatorTest {
               validator.validateString(string).isLongerThan(2);
             });
   }
+
+    @Test
+    public void givenLowerCaseFirstChar_hasPatientNameValidChars() throws IllegalArgumentException {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    validator.validateString("a").hasPatientNameValidChars();
+                });
+    }
+
+    @Test
+    public void givenUpperCaseOtherChar_hasPatientNameValidChars() throws IllegalArgumentException {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    validator.validateString("AB").hasPatientNameValidChars();
+                });
+    }
+
+    @Test
+    public void givenNonLetterChars_hasPatientNameValidChars() throws IllegalArgumentException {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    validator.validateString("123").hasPatientNameValidChars();
+                });
+    }
+
 }
