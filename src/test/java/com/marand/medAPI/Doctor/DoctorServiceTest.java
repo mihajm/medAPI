@@ -1,6 +1,6 @@
 package com.marand.medAPI.Doctor;
 
-import com.marand.medAPI.Common.Services.UpdaterServiceTest;
+import com.marand.medAPI.Common.Services.ReportedServiceTest;
 import com.marand.medAPI.Disease.Disease;
 import com.marand.medAPI.Disease.DiseaseDTO;
 import com.marand.medAPI.Disease.DiseaseService;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
-class DoctorServiceTest extends UpdaterServiceTest<Doctor, DoctorDTO> {
+class DoctorServiceTest extends ReportedServiceTest<Doctor, DoctorDTO> {
 
   private DoctorService service;
 
@@ -58,10 +58,24 @@ class DoctorServiceTest extends UpdaterServiceTest<Doctor, DoctorDTO> {
                     new HashSet(Collections.singletonList(new DiseaseDTO("a_disease")))))));
   }
 
+  @Override
+  protected DoctorDTO createAnotherDTO() {
+    return new DoctorDTO(
+        id + 10,
+        department + "new",
+        new HashSet(
+            Collections.singletonList(
+                new PatientDTO(
+                    65L,
+                    "Janez",
+                    "Novak",
+                    new HashSet(Collections.singletonList(new DiseaseDTO("another_disease")))))));
+  }
+
   @BeforeEach
   void DoctorServiceTestSetup() {
     dto = createDTO();
-    doctor = saveEntity();
+    service.drop();
   }
 
   @AfterEach
@@ -76,6 +90,7 @@ class DoctorServiceTest extends UpdaterServiceTest<Doctor, DoctorDTO> {
 
   @Test
   void givenDTOWithDepartment_setFields_updatesDepartment() {
+    doctor = saveEntity();
     String newDepartment = "marand_crm";
     dto.setDepartment(newDepartment);
     Doctor updatedDoctor = service.setFields(doctor, dto);
@@ -84,6 +99,7 @@ class DoctorServiceTest extends UpdaterServiceTest<Doctor, DoctorDTO> {
 
   @Test
   void givenDTOWithDiseases_setFields_updatesPatients() {
+    doctor = saveEntity();
     String diseaseName = "new_disease";
     long id = 500L;
     String firstName = "Janez";

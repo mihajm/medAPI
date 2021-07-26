@@ -30,6 +30,12 @@ public abstract class BaseServiceTest<E extends BaseDataObject> {
   }
 
   @Test
+  void givenRepoWithOneEntity_countReturnsOne() {
+    saveEntity();
+    assertEquals(1, service.count());
+  }
+
+  @Test
   void savingAnEntity_incrementsCount() {
     service.drop();
     long count = service.count();
@@ -50,21 +56,6 @@ public abstract class BaseServiceTest<E extends BaseDataObject> {
   }
 
   @Test
-  void givenValidId_findOne_returns_entity() {
-    E entity = saveEntity();
-    assertEquals(entity, service.findOne(entity.getId()));
-  }
-
-  @Test
-  void givenInvalidId_findOne() throws EntityNotFoundException {
-    assertThrows(
-        EntityNotFoundException.class,
-        () -> {
-          service.findOne(5000L);
-        });
-  }
-
-  @Test
   void remove_removesEntity() {
     E entity = saveEntity();
     service.remove(entity.getId());
@@ -73,5 +64,6 @@ public abstract class BaseServiceTest<E extends BaseDataObject> {
         () -> {
           service.findOne(entity.getId());
         });
+
   }
 }

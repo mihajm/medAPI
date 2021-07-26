@@ -4,8 +4,9 @@ import com.marand.medAPI.Common.Objects.BaseDataObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import javax.persistence.EntityNotFoundException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class FinderServiceTest<E extends BaseDataObject> extends BaseServiceTest<E> {
 
@@ -32,5 +33,20 @@ public abstract class FinderServiceTest<E extends BaseDataObject> extends BaseSe
     saveEntity();
     saveEntity();
     assertEquals(service.count(), service.findAll().size());
+  }
+
+  @Test
+  void givenValidId_findOne_returns_entity() {
+    E entity = saveEntity();
+    assertEquals(entity, service.findOne(entity.getId()));
+  }
+
+  @Test
+  void givenInvalidId_findOne() throws EntityNotFoundException {
+    assertThrows(
+            EntityNotFoundException.class,
+            () -> {
+              service.findOne(5000L);
+            });
   }
 }

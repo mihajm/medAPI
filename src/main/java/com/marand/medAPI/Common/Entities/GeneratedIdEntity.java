@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 public class GeneratedIdEntity extends BaseDataObject {
   @Id @GeneratedValue private long id;
 
-  protected GeneratedIdEntity() {}
+  public GeneratedIdEntity() {}
 
   protected GeneratedIdEntity(long id) {
     setId(id);

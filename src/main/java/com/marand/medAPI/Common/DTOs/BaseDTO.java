@@ -6,7 +6,7 @@ public class BaseDTO extends BaseDataObject {
 
   private long id = -1;
 
-  protected BaseDTO() {}
+  public BaseDTO() {}
 
   protected BaseDTO(long id) {
     setId(id);

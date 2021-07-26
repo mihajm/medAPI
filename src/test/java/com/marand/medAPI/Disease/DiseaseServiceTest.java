@@ -1,6 +1,8 @@
 package com.marand.medAPI.Disease;
 
-import com.marand.medAPI.Common.Services.UpdaterServiceTest;
+import com.marand.medAPI.Common.Services.ReportedServiceTest;
+import com.marand.medAPI.Report.Report;
+import com.marand.medAPI.Report.ReportService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +14,9 @@ import javax.persistence.EntityNotFoundException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class DiseaseServiceTest extends UpdaterServiceTest<Disease, DiseaseDTO> {
+class DiseaseServiceTest extends ReportedServiceTest<Disease, DiseaseDTO> {
+
+  @Autowired private ReportService reportService;
 
   private String name = "good_at_tests";
   private DiseaseDTO dto = createDTO();
@@ -38,11 +42,15 @@ class DiseaseServiceTest extends UpdaterServiceTest<Disease, DiseaseDTO> {
   }
 
   @BeforeEach
-  private void diseaseServiceTestSetup() {service.drop();}
+  private void diseaseServiceTestSetup() {
+    service.drop();
+    reportService.drop();
+  }
 
   @AfterEach
   private void diseaseServiceTestCleanup() {
     service.drop();
+    reportService.drop();
   }
 
   @Test
@@ -106,6 +114,49 @@ class DiseaseServiceTest extends UpdaterServiceTest<Disease, DiseaseDTO> {
     assertDoesNotThrow(
         () -> {
           service.findOneOrCreate(new DiseaseDTO(disease.getId(), otherDTO.getName()));
+        });
+  }
+
+  @Test
+  void whenFindOneByNameCalled_findOneReported_withMethodName() {
+    Disease disease = saveEntity();
+    service.findOneByName(disease.getName());
+    assertEquals(1, reportService.findByMethodName("findOneByName").size());
+  }
+
+  @Test
+  void whenFindOneCalledOnValidEntity_findOneCallReported_withReturnedEntity() {
+    Disease disease = saveEntity();
+
+    service.findOneByName(disease.getName());
+
+    Report report = reportService.findByMethodName("findOneByName").get(0);
+
+    assertEquals(1, report.getEntities().size());
+    assertTrue(report.getEntities().containsKey(disease.getId()));
+    assertEquals(disease.getClass().getName(), report.getEntities().get(disease.getId()));
+  }
+
+  @Test
+  void whenFindOneCalledOnInValidEntity_isThrownAndReported() {
+
+    assertThrows(
+        EntityNotFoundException.class,
+        () -> {
+          service.findOneByName("this_name_is_not_stored");
+          assertEquals(1, reportService.count());
+        });
+  }
+
+  @Test
+  void whenFindOneCalledOnInValidEntity_findOneCallReported_withThrownNotFoundException() {
+
+    assertThrows(
+        EntityNotFoundException.class,
+        () -> {
+          service.findOneByName("this_name_not_stored");
+          Report report = reportService.findByMethodName("findOneByName").get(0);
+          assertEquals(EntityNotFoundException.class, report.getException().getLeft());
         });
   }
 }

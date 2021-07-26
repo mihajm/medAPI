@@ -26,10 +26,10 @@ public abstract class UpdaterService<E extends BaseDataObject, DTO extends BaseD
   }
 
   public E save(DTO dto) {
-    return save(entityFrom(dto));
+    return saveOne(entityFrom(dto));
   }
 
-  protected E entityFrom(DTO dto) {
+  public E entityFrom(DTO dto) {
     return setFields(findOneOrCreate(dto), dto);
   }
 

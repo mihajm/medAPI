@@ -1,6 +1,6 @@
 package com.marand.medAPI.Patient;
 
-import com.marand.medAPI.Common.Services.UpdaterServiceTest;
+import com.marand.medAPI.Common.Services.ReportedServiceTest;
 import com.marand.medAPI.Disease.Disease;
 import com.marand.medAPI.Disease.DiseaseDTO;
 import com.marand.medAPI.Disease.DiseaseService;
@@ -14,10 +14,11 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
-class PatientServiceTest extends UpdaterServiceTest<Patient, PatientDTO> {
+class PatientServiceTest extends ReportedServiceTest<Patient, PatientDTO> {
 
   private PatientService service;
   private DiseaseService diseaseService;
@@ -55,7 +56,6 @@ class PatientServiceTest extends UpdaterServiceTest<Patient, PatientDTO> {
 
   @BeforeEach
   private void PatientServiceTestSetup() {
-    patient = saveEntity();
     dto = createDTO();
   }
 
@@ -71,6 +71,7 @@ class PatientServiceTest extends UpdaterServiceTest<Patient, PatientDTO> {
 
   @Test
   void givenDTOWithFirstName_setFields_updatesFirstName() {
+    patient = saveEntity();
     String newName = "Janez";
     dto.setFirstName(newName);
     Patient updatedPatient = service.setFields(patient, dto);
@@ -79,6 +80,7 @@ class PatientServiceTest extends UpdaterServiceTest<Patient, PatientDTO> {
 
   @Test
   void givenDTOWithLastName_setFields_updatesLastName() {
+    patient = saveEntity();
     String newName = "Novak";
     dto.setLastName(newName);
     Patient updatedPatient = service.setFields(patient, dto);
@@ -87,6 +89,7 @@ class PatientServiceTest extends UpdaterServiceTest<Patient, PatientDTO> {
 
   @Test
   void givenDTOWithDiseases_setFields_updatesDiseases() {
+    patient = saveEntity();
     String diseaseName = "test_name";
     Set<DiseaseDTO> newDiseases =
         new HashSet(Collections.singletonList(new DiseaseDTO(diseaseName)));
@@ -110,5 +113,4 @@ class PatientServiceTest extends UpdaterServiceTest<Patient, PatientDTO> {
 
     assertEquals(expectedNum, diseaseService.count());
   }
-
 }

@@ -1,13 +1,14 @@
 package com.marand.medAPI.Disease;
 
-import com.marand.medAPI.Common.Services.UpdaterService;
+import com.marand.medAPI.Common.Services.ReportedService;
+import com.marand.medAPI.Report.Reported;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
-public class DiseaseService extends UpdaterService<Disease, DiseaseDTO> {
+public class DiseaseService extends ReportedService<Disease, DiseaseDTO> {
 
   DiseaseRepository repo;
 
@@ -24,6 +25,7 @@ public class DiseaseService extends UpdaterService<Disease, DiseaseDTO> {
     return repo.findByName(name);
   }
 
+  @Reported
   public Disease findOneByName(String name) {
     return findOneByNameOptional(name).orElseThrow(EntityNotFoundException::new);
   }

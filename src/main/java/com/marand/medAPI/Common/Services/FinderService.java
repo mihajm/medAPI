@@ -28,5 +28,4 @@ public abstract class FinderService<E extends BaseDataObject> extends BaseServic
   public List<E> findAll() {
     return repo.findAll();
   }
-
 }

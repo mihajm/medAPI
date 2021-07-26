@@ -2,6 +2,8 @@ package com.marand.medAPI.Common.Validators;
 
 import com.marand.medAPI.Common.Annotations.ReflectWith;
 import com.marand.medAPI.Common.DTOs.BaseDTO;
+import com.marand.medAPI.Common.Entities.BaseEntity;
+import com.marand.medAPI.Common.Entities.GeneratedIdEntity;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -35,7 +37,7 @@ public class FieldValidator {
     return (!isNull(object)
         && isCollection(object)
         && !isEmpty((Collection<?>) object)
-        && isEntityCollection((Collection<?>) object));
+        && isDTOCollection((Collection<?>) object));
   }
 
   public static boolean isReflectableSingleton(Object object) {
@@ -47,10 +49,23 @@ public class FieldValidator {
     return (!isNull(object)
         && isArray(object)
         && !isEmpty((T[]) object)
-        && isEntityArray((T[]) object));
+        && isDTOArray((T[]) object));
+  }
+
+  public static boolean isEntity(Object object) {
+    return (!isNull(object) && isEntityClass(object));
+  }
+
+  public static boolean isEntityCollection(Object object) {
+    return (!isNull(object) && isCollection(object) && isEntityCollection((Collection<?>) object));
   }
 
   private static boolean isEntityCollection(Collection<?> c) {
+    for (Object o : c) if (!isEntityClass(o)) return false;
+    return true;
+  }
+
+  private static boolean isDTOCollection(Collection<?> c) {
     for (Object o : c) if (!isDTO(o)) return false;
     return true;
   }
@@ -71,7 +86,7 @@ public class FieldValidator {
     return object.getClass().isArray();
   }
 
-  private static <T> boolean isEntityArray(T[] a) {
+  private static <T> boolean isDTOArray(T[] a) {
     for (Object o : a) if (!isDTO(o)) return false;
     return true;
   }
@@ -83,6 +98,12 @@ public class FieldValidator {
   private static boolean isSingleton(Object object) {
     return (!(isCollection(object) || isArray(object)));
   }
+
+  private static boolean isEntityClass(Object object) { return (isBaseEntity(object) || isGeneratedIdEntity(object));}
+
+  private static boolean isBaseEntity(Object object) { return BaseEntity.class.isAssignableFrom(object.getClass());}
+
+  private static boolean isGeneratedIdEntity(Object object) {return GeneratedIdEntity.class.isAssignableFrom(object.getClass());}
 
   private static boolean isDTO(Object object) {
     return BaseDTO.class.isAssignableFrom(object.getClass());

@@ -1,7 +1,9 @@
 package com.marand.medAPI.Common.Validators;
 
 import com.marand.medAPI.Common.Annotations.ReflectWith;
+import com.marand.medAPI.Common.DTOs.BaseDTO;
 import com.marand.medAPI.Common.Entities.BaseEntity;
+import com.marand.medAPI.Common.Entities.GeneratedIdEntity;
 import com.marand.medAPI.Disease.DiseaseDTO;
 import com.marand.medAPI.Patient.PatientDTO;
 import org.junit.jupiter.api.Test;
@@ -138,7 +140,8 @@ class FieldValidatorTest {
   }
 
   @Test
-  void givenEntityWithReflectWithAnnotatedParam_isReflectableField_returnsTrue() throws NoSuchFieldException {
+  void givenEntityWithReflectWithAnnotatedParam_isReflectableField_returnsTrue()
+      throws NoSuchFieldException {
     assertTrue(isReflectableField(MockEntity.class.getDeclaredField("strings")));
   }
 
@@ -149,7 +152,8 @@ class FieldValidatorTest {
 
   @Test
   void givenDTOCollectionWithValues_isValidCollection_returnsTrue() {
-    assertTrue(isReflectableCollection(new HashSet(Collections.singletonList(new DiseaseDTO("name")))));
+    assertTrue(
+        isReflectableCollection(new HashSet(Collections.singletonList(new DiseaseDTO("name")))));
   }
 
   @Test
@@ -182,7 +186,7 @@ class FieldValidatorTest {
 
   @Test
   void givenNonDTOArrayWithValues_isValidArray_returnsFalse() {
-    Integer[] ints = {1,2};
+    Integer[] ints = {1, 2};
     assertFalse(isReflectableArray(ints));
   }
 
@@ -228,15 +232,82 @@ class FieldValidatorTest {
   }
 
   @Test
+  void givenBaseEntity_isValidEntity_returnsTrue() {
+    assertTrue(FieldValidator.isEntity(new BaseEntity()));
+  }
+
+  @Test
+  void givenGeneratedIdEntity_isValidEntity_returnsTrue() {
+    assertTrue(FieldValidator.isEntity(new GeneratedIdEntity()));
+  }
+
+  @Test
+  void givenNonEntityClass_isValidEntity_returnsFalse() {
+    assertFalse(FieldValidator.isEntity(new BaseDTO()));
+  }
+
+  @Test
+  void givenEntityCollection_isValidEntity_returnsFalse() {
+    assertFalse(FieldValidator.isEntity(List.of(new BaseEntity())));
+    assertFalse(FieldValidator.isEntity(List.of(new GeneratedIdEntity())));
+  }
+
+  @Test
+  void givenEntityArray_isValidEntity_returnsFalse() {
+    BaseEntity[] baseEntities = {new BaseEntity()};
+    assertFalse(FieldValidator.isEntity(baseEntities));
+    GeneratedIdEntity[] generatedIdEntities = {new GeneratedIdEntity()};
+    assertFalse(FieldValidator.isEntity(generatedIdEntities));
+  }
+
+  @Test
+  void givenNull_isValidEntity_returnsFalse() {
+    assertFalse(FieldValidator.isEntity(null));
+  }
+
+  @Test
   void givenNull_isValidSingleton_returnsFalse() {
     assertFalse(isReflectableSingleton(null));
+  }
+
+  @Test
+  void givenBaseEntityCollection_isValidEntityCollection_returnsTrue() {
+    assertTrue(FieldValidator.isEntityCollection(List.of(new BaseEntity())));
+  }
+
+  @Test
+  void givenGeneratedIdEntityCollection_isValidEntityCollection_returnsTrue() {
+    assertTrue(FieldValidator.isEntityCollection(List.of(new GeneratedIdEntity())));
+  }
+
+  @Test
+  void givenNonEntityClassCollection_isValidEntityCollection_returnsFalse() {
+    assertFalse(FieldValidator.isEntityCollection(List.of(new BaseDTO())));
+  }
+
+  @Test
+  void givenEntity_isValidEntityCollection_returnsFalse() {
+    assertFalse(FieldValidator.isEntityCollection(new BaseEntity()));
+    assertFalse(FieldValidator.isEntityCollection(new GeneratedIdEntity()));
+  }
+
+  @Test
+  void givenEntityArray_isValidEntityCollection_returnsFalse() {
+    BaseEntity[] baseEntities = {new BaseEntity()};
+    assertFalse(FieldValidator.isEntityCollection(baseEntities));
+    GeneratedIdEntity[] generatedIdEntities = {new GeneratedIdEntity()};
+    assertFalse(FieldValidator.isEntityCollection(generatedIdEntities));
+  }
+
+  @Test
+  void givenNull_isValidEntityCollection_returnsFalse() {
+    assertFalse(FieldValidator.isEntityCollection(null));
   }
 
   private static class MockEntity extends BaseEntity {
     private String email;
 
-    @ReflectWith
-    private String[] strings;
+    @ReflectWith private String[] strings;
 
     protected MockEntity() {}
 

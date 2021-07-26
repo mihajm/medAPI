@@ -2,28 +2,43 @@ package com.marand.medAPI.Report;
 
 import com.marand.medAPI.Common.Entities.GeneratedIdEntityTest;
 import com.marand.medAPI.Disease.Disease;
-import com.marand.medAPI.Doctor.Doctor;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.api.function.ThrowingSupplier;
+
+import javax.persistence.Lob;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReportTest extends GeneratedIdEntityTest {
 
-  String entityName = "Disease";
-  long entityId = 5L;
-  String message = "message";
-  Report report = createEntity();
+  private static Date startTime = new Date();
+  String entityName = Disease.class.getName();
+  Long entityId = 5L;
+  HashMap<Long, String> entities = new HashMap<Long, String>(Map.of(entityId, entityName));
+
+  @Lob
+  Pair<Class<? extends Throwable>, String> exception =
+      new ImmutablePair<Class<? extends Throwable>, String>(RuntimeException.class, "message");
+  String methodName = "findOne";
+
+  Report report = new Report(entities, methodName, exception);
 
   @BeforeEach
   private void ReportTestSetup() {
-    report = createEntity();
+    report = new Report(entities, methodName, exception);
   }
 
   protected Report createEntity() {
-    return new Report(entityName, entityId, message);
+    Report report = new Report();
+    report.setStartTime(startTime);
+    return report;
   }
 
   @Test
@@ -32,13 +47,32 @@ class ReportTest extends GeneratedIdEntityTest {
   }
 
   @Test
+  void canBeConstructedWithMethodName() {
+    assertDoesNotThrow(() -> new Report(methodName));
+  }
+
+  @Test
+  void whenConstructedWithMethodName_hasMethodName() {
+    assertEquals(methodName, new Report(methodName).getMethodName());
+  }
+
+  @Test
   void canBeConstructedAllArgs() {
     assertDoesNotThrow(this::createEntity);
   }
 
   @Test
+  void whenConstructedWithAllArgs_hasArgs() {
+    assertTrue(report.getEntities().containsKey(entityId));
+    assertEquals(entityName, report.getEntities().get(entityId));
+    assertEquals(exception, report.getException());
+    assertNotNull(report.getStartTime());
+  }
+
+  @Test
   void canBeConstructedWithEntityAsArgs() {
-    assertDoesNotThrow(() -> new Report(new Disease(50L, "a_disease"), message));
+    assertDoesNotThrow(
+        () -> new Report(List.of(new Disease(50L, "a_disease")), methodName, exception));
   }
 
   @Test
@@ -48,13 +82,13 @@ class ReportTest extends GeneratedIdEntityTest {
 
   @Test
   void whenConstructedWithEntityHasCorrectIdAndName() {
-    Disease disease = new Disease (50L, "a_disease");
+    Disease disease = new Disease(50L, "a_disease");
 
-    Report report = new Report(disease, message);
+    Report report = new Report(List.of(disease), methodName, exception);
 
-    assertEquals(disease.getId(), report.getEntityId());
-    assertTrue(report.getEntityName().contains("Disease"));
-    assertEquals(message, report.getMessage());
+    assertTrue(report.getEntities().containsKey(disease.getId()));
+    assertEquals(disease.getClass().getName(), report.getEntities().get(disease.getId()));
+    assertEquals(exception, report.getException());
   }
 
   @Test
@@ -63,38 +97,49 @@ class ReportTest extends GeneratedIdEntityTest {
   }
 
   @Test
-  void getEntityName() {
-    assertEquals(entityName, report.getEntityName());
+  void setStartTime_setsStartTime() {
+    report.setStartTime(startTime);
+    assertEquals(startTime, report.getStartTime());
   }
 
   @Test
-  void setEntityName() {
-    String entityName = "Patient";
-    report.setEntityName(entityName);
-    assertEquals(entityName, report.getEntityName());
+  void getException() {
+    assertEquals(exception, report.getException());
   }
 
   @Test
-  void getEntityId() {
-    assertEquals(entityId, report.getEntityId());
+  void setException() {
+    Pair<Class<? extends Throwable>, String> newException =
+        new ImmutablePair<Class<? extends Throwable>, String>(RuntimeException.class, "message");
+    report.setException(newException);
+    assertEquals(newException, report.getException());
   }
 
   @Test
-  void setEntityId() {
-    long entityId = 55L;
-    report.setEntityId(entityId);
-    assertEquals(entityId, report.getEntityId());
+  void getMethodName_getsMethodName() {
+    assertEquals(methodName, report.getMethodName());
   }
 
   @Test
-  void getMessage() {
-    assertEquals(message, report.getMessage());
+  void setMethodName_setsMethodName() {
+    String newMethodName = "count";
+    report.setMethodName(newMethodName);
+    assertEquals(newMethodName, report.getMethodName());
   }
 
   @Test
-  void setMessage() {
-    String message = "newMessage";
-    report.setMessage(message);
-    assertEquals(message, report.getMessage());
+  void setEntities_setsEntityIdAndName() {
+    Disease disease = new Disease(50L, "name");
+    report.setEntities(List.of(disease));
+    assertTrue(report.getEntities().containsKey(disease.getId()));
+    assertEquals(disease.getClass().getName(), report.getEntities().get(disease.getId()));
+  }
+
+  @Test
+  void addEntity_setsEntityIdAndName() {
+    Disease disease = new Disease(50L, "name");
+    report.addEntity(disease);
+    assertTrue(report.getEntities().containsKey(disease.getId()));
+    assertEquals(disease.getClass().getName(), report.getEntities().get(disease.getId()));
   }
 }

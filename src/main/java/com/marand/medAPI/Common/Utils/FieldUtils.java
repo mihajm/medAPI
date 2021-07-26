@@ -86,9 +86,8 @@ public class FieldUtils {
       E target, String fieldName, Collection<DTO> DTOs, UpdaterService<E, DTO> service) {
 
     PropertyAccessorFactory.forBeanPropertyAccess(target)
-        .setPropertyValue(fieldName, DTOs.stream().map(service::save).collect(Collectors.toSet()));
+        .setPropertyValue(fieldName, DTOs.stream().map(service::entityFrom).collect(Collectors.toSet()));
   }
-
 
   @SuppressWarnings("unchecked")
   public static <E extends BaseDataObject, DTO extends BaseDTO> void writeEntityField(
