@@ -10,12 +10,12 @@ Successful returns or thrown exceptions reported in table document_report
 
 ## Usage
 
-# Run in watch mode
+# Watch mode
 $ mvn spring-boot:run
-# or
+or
 $ mvnw spring-boot:run
 
-# Run tests
+# Test
 $ mvn clean test
-# or
+or
 $ mvnw clean test
