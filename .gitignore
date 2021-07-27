@@ -1,6 +1,4 @@
 HELP.md
-target/
-!target/pit-reports/**
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
