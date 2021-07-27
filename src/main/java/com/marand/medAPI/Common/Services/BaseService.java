@@ -2,6 +2,7 @@ package com.marand.medAPI.Common.Services;
 
 import com.marand.medAPI.Common.Objects.BaseDataObject;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,28 +17,28 @@ public abstract class BaseService<E extends BaseDataObject> {
 
   protected abstract E create();
 
-  @Transactional
+  @Transactional(isolation = Isolation.REPEATABLE_READ)
   public abstract E findOne(long id);
 
-  @Transactional
+  @Transactional(isolation = Isolation.REPEATABLE_READ)
   public abstract List<E> findAll();
 
-  @Transactional
+  @Transactional(isolation = Isolation.REPEATABLE_READ)
   public long count() {
     return repo.count();
   }
 
-  @Transactional(propagation = Propagation.REQUIRES_NEW)
+  @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
   public E saveOne(E entity) {
     return repo.save(entity);
   }
 
-  @Transactional(propagation = Propagation.REQUIRES_NEW)
+  @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
   public void remove(long id) {
     repo.deleteById(id);
   }
 
-  @Transactional(propagation = Propagation.REQUIRES_NEW)
+  @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ)
   public void drop() {
     repo.deleteAllInBatch();
   }

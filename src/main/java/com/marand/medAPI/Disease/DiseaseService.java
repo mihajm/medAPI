@@ -3,6 +3,7 @@ package com.marand.medAPI.Disease;
 import com.marand.medAPI.Common.Services.ReportedService;
 import com.marand.medAPI.Report.Reported;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
@@ -27,7 +28,7 @@ public class DiseaseService extends ReportedService<Disease, DiseaseDTO> {
   }
 
   @Reported
-  @Transactional
+  @Transactional(isolation = Isolation.REPEATABLE_READ)
   public Disease findOneByName(String name) {
     return findOneByNameOptional(name).orElseThrow(EntityNotFoundException::new);
   }
