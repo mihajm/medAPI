@@ -21,6 +21,7 @@ public class ReportService extends FinderService<Report> {
     return new Report();
   }
 
+  @Reported
   @Transactional
   public List<Report> findByMethodName(String methodName) {
     return repo.findByMethodName(methodName);

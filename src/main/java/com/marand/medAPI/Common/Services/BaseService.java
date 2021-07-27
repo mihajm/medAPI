@@ -16,20 +16,23 @@ public abstract class BaseService<E extends BaseDataObject> {
 
   protected abstract E create();
 
+  @Transactional
   public abstract E findOne(long id);
 
+  @Transactional
   public abstract List<E> findAll();
 
+  @Transactional
   public long count() {
     return repo.count();
   }
 
-  @Transactional
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
   public E saveOne(E entity) {
     return repo.save(entity);
   }
 
-  @Transactional
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void remove(long id) {
     repo.deleteById(id);
   }

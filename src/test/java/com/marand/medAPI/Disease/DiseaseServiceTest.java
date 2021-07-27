@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -139,7 +138,6 @@ class DiseaseServiceTest extends ReportedServiceTest<Disease, DiseaseDTO> {
   }
 
   @Test
-  @Transactional(noRollbackFor = EntityNotFoundException.class)
   void whenFindOneCalledOnInValidEntity_isThrownAndReported() {
     try {
       service.findOneByName("this_name_is_not_stored");
@@ -149,7 +147,6 @@ class DiseaseServiceTest extends ReportedServiceTest<Disease, DiseaseDTO> {
   }
 
   @Test
-  @Transactional(noRollbackFor = EntityNotFoundException.class)
   void whenFindOneCalledOnInValidEntity_findOneCallReported_withThrownNotFoundException() {
     try {
       service.findOneByName("this_name_is_not_stored");
