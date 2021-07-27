@@ -113,18 +113,18 @@ public class FieldValidator {
   public static boolean isDefaultValue(String key, Object value) {
     if (isNull(value)) return true;
     if (isDefaultId(key, value)) return true;
-    return isDefaultPrimitive(value);
+    return isDefaultPrimitive(key, value);
   }
 
   private static boolean isDefaultId(String key, Object value) {
     return value instanceof Long && key.equals("id") && (long) value < 0L;
   }
 
-  private static boolean isDefaultPrimitive(Object value) {
+  private static boolean isDefaultPrimitive(String key, Object value) {
     if (value instanceof Byte && (byte) value == 0) return true;
     if (value instanceof Short && (short) value == 0) return true;
     if (value instanceof Integer && (int) value == 0) return true;
-    if (value instanceof Long && (long) value == 0L) return true;
+    if (value instanceof Long && !key.equals("id") && (long) value == 0L) return true;
     if (value instanceof Float && (float) value == 0.0f) return true;
     if (value instanceof Double && (double) value == 0.0d) return true;
     if (value instanceof Character && (char) value == '\u0000') return true;

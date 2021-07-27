@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>BaseDataObject.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.marand.medAPI.Common.Objects;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.builder.HashCodeBuilder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.lang3.builder.ReflectionToStringBuilder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public abstract class BaseDataObject {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>  protected BaseDataObject() {}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public abstract long getId();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public abstract void setId(long id);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public boolean equals(Object other) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_18'/>
+18
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_18'>2</a>
+<span>
+
+1. equals : replaced boolean return with true for com/marand/medAPI/Common/Objects/BaseDataObject::equals &rarr; KILLED<br/>
+
+2. equals : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    if (this.getClass() != other.getClass()) return false;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_19'/>
+19
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_19'>2</a>
+<span>
+
+1. equals : replaced boolean return with false for com/marand/medAPI/Common/Objects/BaseDataObject::equals &rarr; KILLED<br/>
+
+2. equals : replaced boolean return with true for com/marand/medAPI/Common/Objects/BaseDataObject::equals &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return reflectionEquals(this, other);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public String toString() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_24'/>
+24
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_24'>1</a>
+<span>
+
+1. toString : replaced return value with &#34;&#34; for com/marand/medAPI/Common/Objects/BaseDataObject::toString &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return ReflectionToStringBuilder.toString(this);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  public int hashCode() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_29'/>
+29
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_29'>1</a>
+<span>
+
+1. hashCode : replaced int return with 0 for com/marand/medAPI/Common/Objects/BaseDataObject::hashCode &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    return HashCodeBuilder.reflectionHashCode(this);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@603601a1_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@603601a1_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_18'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:equals_ComparesFields_IfSameClass()]</span></span> replaced boolean return with true for com/marand/medAPI/Common/Objects/BaseDataObject::equals &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:equals_ComparesFields_IfSameClass()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@603601a1_19'>19</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_19'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:equals_ComparesFields_IfSameClass()]</span></span> replaced boolean return with false for com/marand/medAPI/Common/Objects/BaseDataObject::equals &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>com.marand.medAPI.Disease.DiseaseDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseDTOTest]/[method:equals_ComparesFields_IfSameClass()]</span></span> replaced boolean return with true for com/marand/medAPI/Common/Objects/BaseDataObject::equals &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@603601a1_24'>24</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_24'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:toString_returnsAllFieldsAndValues()]</span></span> replaced return value with &#34;&#34; for com/marand/medAPI/Common/Objects/BaseDataObject::toString &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@603601a1_29'>29</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@603601a1_29'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>hashCode<br/><b>Killed by : </b>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:hashCode_returnsHashBasedOnFieldValues()]</span></span> replaced int return with 0 for com/marand/medAPI/Common/Objects/BaseDataObject::hashCode &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>BOOLEAN_FALSE_RETURN</li>
+
+<li class='mutator'>BOOLEAN_TRUE_RETURN</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+<li class='mutator'>EMPTY_RETURN_VALUES</li>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>NULL_RETURN_VALUES</li>
+
+<li class='mutator'>PRIMITIVE_RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:containsNameWhenDeSerialized()] (13 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenFindOneCalled_findOneReported_withMethodName()] (41 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:containsIdWhenDeSerialized()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:isDeSerializable()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:drop_deletesAllEntities()] (26 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:addingNullPatient()] (7 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenBlankDepartment_whenPostCalled_returnsBadRequest()] (19 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenValidDTO_whenPostCalled_returnsStatusOK()] (32 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenValidIdAndValidDto_whenPosted_returnsStatusOK()] (43 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:hasId()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenDiseaseWithEmptyName_whenPostCalled_returnsBadRequest()] (27 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenRemoveCalled_removeReported_withMethodName()] (46 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:canBeConstructedWithNoArgs()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentWithNonLetterChars_whenPostCalled_returnsCorrectValidationErrors()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:equals_ComparesClasses()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingEmptyFirstName()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:toString_returnsAllFieldsAndValues()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenEmptyLastName_whenPostCalled_returnsBadRequest()] (26 ms)</li><li>com.marand.medAPI.Common.Exceptions.APIExceptionTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Exceptions.APIExceptionTest]/[method:atTimeStamp_setsTimeStamp()] (15 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentWithUpperCasedCharacters_whenPostCalled_returnsBadRequest()] (26 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:givenNewDTO_whenGetIdCalled_ReturnsNegativeOne()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:toString_returnsAllFieldsAndValues()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:canBeConstructedWithId()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:getDiseases_ReturnsDiseases()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenSaveCalled_saveReported_withMethodName()] (25 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNullDepartment_whenPostCalled_returnsCorrectValidationErrors()] (29 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenConstructedWithId_hasId()] (8 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenBlankFirstName_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:hashCode_returnsHashBasedOnFieldValues()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:whenConstructedWithIdAndDepartment_hasIdAndDepartment()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenEmptyDepartment_whenPostCalled_returnsCorrectValidationErrors()] (25 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenValidId_whenDeleteCalled_RemovesEntity()] (43 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:equals_ComparesFields_IfSameClass()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingFirstNameWithIllegalChars()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenValidDTO_entityFrom_createsEntityWithFields()] (30 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:whenPostCalled_returnsEntityInBody()] (33 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenConstructedWithIdFirstANdLastNamesAndDiseases_hasAllSet()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:whenGetAllCalled_returnsStatusOK()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:whenGetOneCalled_returnsEntity()] (44 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:isSerializable()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenDTO_savesEntity()] (29 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenEmptyFirstName_whenPostCalled_returnsBadRequest()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenBlankLastName_whenPostCalled_returnsCorrectValidationErrors()] (29 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:canBeConstructedWithId()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:setFirstName_SetsFirstName()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentLargerThan255Chars_whenPostCalled_returnsCorrectValidationErrors()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:canBeConstructedWithIdFirstANdLastNamesAndDiseases()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenSaveCalled_saveReported_withMethodName()] (36 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:equals_ComparesClasses()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithNonLetterChars_whenPostCalled_returnsBadRequest()] (20 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDiseaseWithLargerThan255CharLongName_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenConstructedWithId_HasId()] (6 ms)</li><li>com.marand.medAPI.Report.ReportTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Report.ReportTest]/[method:equals_ComparesClasses()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenBlankLastName_whenPostCalled_returnsBadRequest()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenEmptyFirstName_whenPostCalled_returnsCorrectValidationErrors()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithNonLetterChars_whenPostCalled_returnsBadRequest()] (21 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenLastNameWithoutUpperCasedFirstCharacter_whenPostCalled_returnsBadRequest()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:containsNameWhenSerialized()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameLargerThan255Chars_whenPostCalled_returnsValidationError()] (21 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithNonLetterChars_whenPostCalled_returnsCorrectValidationErrors()] (20 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenFindOneCalledOnInValidEntity_isThrownAndReported()] (23 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNullLastName_whenPostCalled_returnsValidationError()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenEmptyLastName_whenPostCalled_returnsBadRequest()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNoEntities_whenGetAllCalled_ReturnsEmptyList()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:removeDisease_removesDisease()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:givenUppercaseCharacters_WhenSettingLastName_ConvertsFirstLetterToUpperCase()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:canBeConstructedWithId()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:setLastName_SetsLastName()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDiseaseWithUpperCasedChar_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenConstructed_WithoutParams_DiseaseSet_isEmpty()] (3 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:hashCode_returnsHashBasedOnFieldValues()] (5 ms)</li><li>com.marand.medAPI.Disease.DiseaseDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseDTOTest]/[method:hashCode_returnsHashBasedOnFieldValues()] (4 ms)</li><li>com.marand.medAPI.Report.ReportTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Report.ReportTest]/[method:toString_returnsAllFieldsAndValues()] (5 ms)</li><li>com.marand.medAPI.Report.ReportServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Report.ReportServiceTest]/[method:givenValidId_findOne_returns_entity()] (17 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:whenConstructed_WithoutParams_DiseaseSet_isEmpty()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenFindOneCalledOnValidEntity_findOneCallReported_withReturnedEntity()] (33 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:whenConstructedWithId_hasId()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenInvalidId_whenGetOneCalled_returnsCorrectErrorMessage()] (38 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:whenGetAllCalled_returnsListOfEntities()] (39 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenValidId_whenDeleteCalled_RemovesEntity()] (50 ms)</li><li>com.marand.medAPI.Common.Validators.FieldValidatorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Validators.FieldValidatorTest]/[method:givenDTOCollectionWithValues_isValidCollection_returnsTrue()] (8 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:whenGetOneCalled_returnsStatusOK()] (34 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenFindAllCalled_findAllCallReported_withMethodName()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:givenUppercaseCharacters_WhenSettingLastName_ConvertsNonFirstLettersToLowerCased()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:remove_removesEntity()] (27 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:equals_ComparesFields_IfSameClass()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenSettingNullDepartment()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:equals_ComparesFields_IfSameClass()] (7 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentLargerThan255Chars_whenPostCalled_returnsValidationError()] (21 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:canBeConstructedWithIdAndDepartmentAndPatients()] (7 ms)</li><li>com.marand.medAPI.Disease.DiseaseDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseDTOTest]/[method:equals_ComparesClasses()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenSettingEmptyName()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:getFirstName_ReturnsFirstName()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:hasId()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithUpperCasedCharacters_whenPostCalled_returnsBadRequest()] (21 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentWithUpperCasedCharacters_whenPostCalled_returnsValidationError()] (21 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:whenGetAllCalled_returnsStatusOK()] (21 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenFirstNameWithNonLetterChars_whenPostCalled_returnsBadRequest()] (26 ms)</li><li>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:equals_ComparesFields_IfSameClass()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:setDepartment_setsDepartment()] (10 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDiseaseWithBlankName_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:toString_returnsAllFieldsAndValues()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:containsNameWhenSerialized()] (15 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithUpperCasedCharacters_returnsCorrectValidationErrors()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:whenGetAllCalled_returnsListOfEntities()] (42 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:containsIdWhenSerialized()] (5 ms)</li><li>com.marand.medAPI.Report.ReportTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Report.ReportTest]/[method:equals_ComparesFields_IfSameClass()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:setDepartment_setsDepartment()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenDiseaseWithNullName_whenPostCalled_returnsBadRequest()] (28 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithoutUpperCasedFirstCharacter_whenPostCalled_returnsValidationError()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentLargerThan255Chars_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:hasEmptyPatientsList_whenConstructed()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:addDisease_addsDisease()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNullPatients_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:whenSaveCalled_saveReported_withMethodName()] (29 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenFindOneThrown_throwReportedWithExceptionClass()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenValidIdAndValidDto_whenPosted_returnsStatusOK()] (46 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:isDeSerializable()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenBlankFirstName_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenSettingNameWithIllegalChars()] (9 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:drop_deletesAllEntities()] (32 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:whenGetOneCalled_returnsEntity()] (43 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithoutUpperCasedFirstCharacter_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenBlankFirstName_whenPostCalled_returnsValidationError()] (24 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:containsIdWhenSerialized()] (10 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenRepoWithOneEntity_countReturnsOne()] (25 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenValidId_findOneReturnsEntity()] (33 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameLargerThan255Chars_whenPostCalled_returnsValidationError()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenEmptyDepartment_whenPostCalled_returnsValidationError()] (25 ms)</li><li>com.marand.medAPI.Common.Validators.FieldValidatorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Validators.FieldValidatorTest]/[method:givenEqualTypeFieldAndSetType_()] (10 ms)</li><li>com.marand.medAPI.Common.Utils.FieldUtilsTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Utils.FieldUtilsTest]/[method:transferFields_SetsFieldsOfOtherEntity_toThoseOfProvidedObject()] (9 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenInvalidId_whenGetOneCalled_returnsStatusNotFound()] (26 ms)</li><li>com.marand.medAPI.Disease.DiseaseDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseDTOTest]/[method:toString_returnsAllFieldsAndValues()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:canBeConstructedWithIdFirstANdLastNames()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:canBeConstructedWithIdAndDepartmentAndPatients()] (5 ms)</li><li>com.marand.medAPI.Common.Utils.FieldUtilsTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Utils.FieldUtilsTest]/[method:givenWrongValueType_writeFields_ignoresField()] (8 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithNonLetterChars_whenPostCalled_returnsValidationError()] (20 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenEmptyDepartment_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Disease.DiseaseDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseDTOTest]/[method:equals_ComparesFields_IfSameClass()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:addPatient_addsPatient()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNullDepartment_whenPostCalled_returnsValidationError()] (24 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenInvalidId_findOne()] (22 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:givenValidId_findOneOrCreate_returnsEntityInDB()] (27 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:idIsSettable()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:hasId()] (3 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenValidSaveCalled_saveReported_withSavedEntity()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:whenConstructedWithId_HasId()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:idIsSettable()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNullDiseases_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenInvalidId_findOne()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDiseaseWithEmptyName_whenPostCalled_returnsBadRequest()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenEmptyFirstName_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:canBeConstructedWithNoArgs()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:isSerializable()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithNonLetterChars_whenPostCalled_returnsValidationError()] (22 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenInvalidId_whenGetOneCalled_returnsStatusNotFound()] (20 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenInvalidId_whenGetOneCalled_returnsBadRequest()] (29 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDiseaseWithNullName_whenPostCalled_returnsBadRequest()] (26 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenDTOWithPatients_savesPatients()] (37 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:whenPostCalled_returnsEntityInBody()] (29 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:getFirstName_ReturnsFirstName()] (4 ms)</li><li>com.marand.medAPI.Common.Utils.FieldUtilsEntityReflectionTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Utils.FieldUtilsEntityReflectionTest]/[method:givenDoctorDTOWithPatientDTO_reflectsPatientDTOtoPatient()] (31 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:isDeSerializable()] (9 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenFindOneCalled_findOneReported_withMethodName()] (25 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:containsNameWhenDeSerialized()] (10 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenValidIdAndValidDto_whenPosted_UpdatesEntity()] (55 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenFindAllCalled_findAllCallReported_withReturnedEntities()] (35 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:findOneOrCreate_WhenIdInDB_findsOne()] (32 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:setPatients_setsPatients()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenValidSaveCalled_saveReported_withSavedEntity()] (39 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingTooLongLastName()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:isSerializable()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenDTOWithDiseases_savesDiseases()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenBlankLastName_whenPostCalled_returnsValidationError()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenDTOWithLastName_setFields_updatesLastName()] (26 ms)</li><li>com.marand.medAPI.Report.ReportServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Report.ReportServiceTest]/[method:findByMethodName_returnsListWithEntitiesWithMatchingMethodName()] (18 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenValidIdAndValidDto_whenPosted_UpdatesEntity()] (42 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNullDepartment_whenPostCalled_returnsBadRequest()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenValidDTO_entityFrom_createsEntityWithFields()] (24 ms)</li><li>com.marand.medAPI.Common.Validators.FieldValidatorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Validators.FieldValidatorTest]/[method:givenCollection_isValidArray_returnsFalse()] (11 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithUpperCasedCharacters_whenPostCalled_returnsValidationError()] (23 ms)</li><li>com.marand.medAPI.Report.ReportTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Report.ReportTest]/[method:hashCode_returnsHashBasedOnFieldValues()] (3 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenDTOWithDiseases_savesDiseases()] (37 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenValidDTO_whenPostCalled_returnsStatusOK()] (33 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenRepoWithOneEntity_countReturnsOne()] (32 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenValidId_findOneOrCreate_returnsEntityInDB()] (31 ms)</li><li>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:hashCode_returnsHashBasedOnFieldValues()] (3 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenLastNameLargerThan255Chars_whenPostCalled_returnsBadRequest()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenValidId_findOneOrCreate_returnsEntityInDB()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingNullLastName()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenSettingTooLongName()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameLargerThan255Chars_whenPostCalled_returnsBadRequest()] (24 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenConstructedWithIdAndDepartmentAndPatients_hasIdAndDepartmentAndPatients()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:createEntity_returnsNewEntity()] (19 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:whenConstructedWithIdAndDepartment_hasIdAndDepartment()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:containsNameWhenSerialized()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenDTO_savesEntity()] (40 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingLastNameWithIllegalChars()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithUpperCasedCharacters_whenPostCalled_returnsValidationError()] (26 ms)</li><li>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:equals_ComparesClasses()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:getLastName_ReturnsLastName()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:createEntity_returnsNewEntity()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenFindOneThrown_throwReportedWithExceptionClass()] (30 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenInvalidId_whenGetOneCalled_returnsCorrectErrorMessage()] (25 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenFindAllCalled_findAllCallReported_withReturnedEntities()] (43 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenEmptyLastName_whenPostCalled_returnsCorrectValidationErrors()] (31 ms)</li><li>com.marand.medAPI.Common.Utils.FieldUtilsTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Utils.FieldUtilsTest]/[method:givenWrongValueNames_writeFields_ignoresField()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:idIsSettable()] (3 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:canBeConstructedWithIdFirstANdLastNames()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:getPatients_getsPatients()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenEmptyRepo_countReturnsZero()] (20 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenDTOOFExistingEntity_UpdatesEntity()] (31 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:equals_ComparesFields_IfSameClass()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenEmptyRepo_countReturnsZero()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingTooLongFirstName()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:whenConstructedWithId_HasId()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:isSerializable()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:canBeConstructedWithIdAndDepartment()] (9 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingNullFirstName()] (5 ms)</li><li>com.marand.medAPI.Common.Utils.FieldUtilsTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Utils.FieldUtilsTest]/[method:givenWrongValueType_writeField_ignoresField()] (6 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenValidId_findOne_returns_entity()] (28 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:canBeConstructedWithNoArgs()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:givenUppercaseCharacters_WhenSettingFirstName_ConvertsNonFirstLettersToLowerCased()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenDTOOFExistingEntity_UpdatesEntity()] (48 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:idIsSettable()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenDTOWithDiseases_setFields_updatesPatients()] (36 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:canBeConstructedWithId()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingEmptyLastName()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenBlankFirstName_whenPostCalled_returnsCorrectValidationErrors()] (23 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:findOneOrCreate_whenNameNotInDb_createsOne()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNullFirstName_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentWithNonLetterChars_whenPostCalled_returnsValidationError()] (28 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:canBeConstructedWithIdAndDepartment()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenDTOWithDepartment_setFields_updatesDepartment()] (41 ms)</li><li>com.marand.medAPI.Disease.DiseaseControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseControllerTest]/[method:whenGetOneCalled_returnsEntity()] (41 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:canBeConstructedWithIdFirstANdLastNamesAndDiseases()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenConstructedWithId_HasId()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithoutUpperCasedFirstCharacter_whenPostCalled_returnsCorrectValidationErrors()] (19 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:whenConstructedWithoutId_HasNegativeId()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:setDiseases_SetsDiseases()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:containsIdWhenSerialized()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNullDiseases_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:getPatients_getsPatients()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:containsNameWhenDeSerialized()] (19 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:hasEmptyPatientsList_whenConstructed()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:givenUppercaseCharacters_WhenSettingDepartment_ConvertsToLowerCased()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:settingNullPatients()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:containsNameWhenDeSerialized()] (14 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:containsIdWhenSerialized()] (8 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:whenConstructedWithIdAndDepartmentAndPatients_hasIdAndDepartmentAndPatients()] (5 ms)</li><li>com.marand.medAPI.Report.ReportRepositoryTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Report.ReportRepositoryTest]/[method:ifMultipleReportsExist_returnsAllReportsMatchingMethodName()] (21 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenFirstNameWithoutUpperCasedFirstCharacter_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenFindOneCalledOnInValidEntity_isThrownAndReported()] (19 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:removePatient_removesPatient()] (7 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenBlankDepartment_whenPostCalled_returnsValidationError()] (25 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenDiseaseWithUpperCasedChar_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameLargerThan255Chars_whenPostCalled_returnsBadRequest()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenDTOWithFirstName_setFields_updatesFirstName()] (28 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameLargerThan255Chars_whenPostCalled_returnsCorrectValidationErrors()] (23 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:containsIdWhenDeSerialized()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithNonLetterChars_whenPostCalled_returnsCorrectValidationErrors()] (20 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:whenGetOneCalled_returnsStatusOK()] (42 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:givenLowerCharacters_WhenSettingFirstName_ConvertsFirstLetterToUpperCase()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenDiseaseWithLargerThan255CharLongName_whenPostCalled_returnsBadRequest()] (28 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithoutUpperCasedFirstCharacter_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:givenValidId_findOne_returns_entity()] (39 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenLastNameWithUpperCasedCharacters_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithoutUpperCasedFirstCharacter_returnsCorrectValidationErrors()] (22 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenDiseaseWithNonLetterChars_whenPostCalled_returnsBadRequest()] (30 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:savingAnEntity_incrementsCount()] (30 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentWithUpperCasedCharacters_whenPostCalled_returnsCorrectValidationErrors()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:setPatients_setsPatients()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenFindAllCalled_findAllCallReported_withMethodName()] (21 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:setDiseases_SetsDiseases()] (4 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:givenEntityInDB_findOneByName_returnsEntity()] (32 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:findOneOrCreate_whenNameAlreadyInDb_findsOne()] (26 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:isDeSerializable()] (10 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameLargerThan255Chars_whenPostCalled_returnsCorrectValidationErrors()] (24 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:equals_ComparesClasses()] (6 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:containsNameWhenSerialized()] (9 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNullFirstName_whenPostCalled_returnsBadRequest()] (18 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNoEntities_whenGetAllCalled_ReturnsEmptyList()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDiseaseWithNonLetterChars_whenPostCalled_returnsBadRequest()] (22 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:toString_returnsAllFieldsAndValues()] (7 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenConstructedWithIdFirstANdLastNames_hasAllSet()] (5 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:findOneOrCreate_whenIdAndNameInDB_andIsSameEntity_findsOne()] (32 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:whenConstructedWithIdFirstANdLastNames_hasAllSet()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:equals_ComparesClasses()] (9 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:getDepartment_getsDepartment()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:create_returnsNewEntity()] (17 ms)</li><li>com.marand.medAPI.Common.Utils.FieldUtilsEntityReflectionTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Utils.FieldUtilsEntityReflectionTest]/[method:givenPatientDTOWithDiseaseDTO_reflectsDiseaseDTOtoDisease()] (31 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenDTOWithDiseases_setFields_updatesDiseases()] (25 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:givenNewDTO_whenGetIdCalled_ReturnsNegativeOne()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenInvalidId_whenGetOneCalled_returnsBadRequest()] (36 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:findAll_ReturnsSetOfAllEntities()] (36 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:findOneOrCreate_WhenIdNotInDB_createsOne()] (25 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenDepartmentWithNonLetterChars_whenPostCalled_returnsBadRequest()] (21 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenLastNameWithUpperCasedCharacters_whenPostCalled_returnsBadRequest()] (21 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenFindOneCalledOnValidEntity_findOneCallReported_withReturnedEntity()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenSettingNullDiseases()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithUpperCasedCharacters_whenPostCalled_returnsCorrectValidationErrors()] (23 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:whenAddingNullDisease()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNullLastName_whenPostCalled_returnsCorrectValidationErrors()] (26 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:hashCode_returnsHashBasedOnFieldValues()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:whenConstructedWithoutId_HasNegativeId()] (5 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:whenCountCalled_countCallReported_withMethodName()] (47 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNullLastName_whenPostCalled_returnsBadRequest()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNullFirstName_whenPostCalled_returnsCorrectValidationErrors()] (26 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:hashCode_returnsHashBasedOnFieldValues()] (4 ms)</li><li>com.marand.medAPI.Disease.DiseaseServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseServiceTest]/[method:givenValidId_findOne_returns_entity()] (29 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenDiseaseWithBlankName_whenPostCalled_returnsBadRequest()] (30 ms)</li><li>com.marand.medAPI.Doctor.DoctorDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorDTOTest]/[method:getDepartment_getsDepartment()] (5 ms)</li><li>com.marand.medAPI.Common.Utils.FieldUtilsTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Common.Utils.FieldUtilsTest]/[method:givenFieldNameOfNonExistentField_writeField_ignoresField()] (11 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:savingAnEntity_incrementsCount()] (34 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:canBeConstructedWithNoArgs()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenFirstNameLargerThan255Chars_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:findAll_ReturnsSetOfAllEntities()] (51 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:givenValidId_findOneReturnsEntity()] (27 ms)</li><li>com.marand.medAPI.Doctor.DoctorTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorTest]/[method:hasId()] (7 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:create_returnsNewEntity()] (19 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenLastNameWithNonLetterChars_whenPostCalled_returnsBadRequest()] (24 ms)</li><li>com.marand.medAPI.Doctor.DoctorServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorServiceTest]/[method:remove_removesEntity()] (34 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenEmptyLastName_whenPostCalled_returnsValidationError()] (26 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenBlankDepartment_whenPostCalled_returnsCorrectValidationErrors()] (20 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenNullLastName_whenPostCalled_returnsBadRequest()] (20 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenBlankLastName_whenPostCalled_returnsBadRequest()] (24 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenRemoveCalled_removeReported_withMethodName()] (25 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenFirstNameWithoutUpperCasedFirstCharacter_whenPostCalled_returnsValidationError()] (18 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:setLastName_SetsLastName()] (5 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:getDiseases_ReturnsDiseases()] (3 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:whenConstructedWithIdFirstANdLastNamesAndDiseases_hasAllSet()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenEmptyFirstName_whenPostCalled_returnsValidationError()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientControllerTest]/[method:givenNullFirstName_whenPostCalled_returnsValidationError()] (27 ms)</li><li>com.marand.medAPI.Patient.PatientDTOTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientDTOTest]/[method:getLastName_ReturnsLastName()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientTest]/[method:setFirstName_SetsFirstName()] (4 ms)</li><li>com.marand.medAPI.Doctor.DoctorControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Doctor.DoctorControllerTest]/[method:givenFirstNameWithUpperCasedCharacters_whenPostCalled_returnsBadRequest()] (23 ms)</li><li>com.marand.medAPI.Disease.DiseaseTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseTest]/[method:toString_returnsAllFieldsAndValues()] (4 ms)</li><li>com.marand.medAPI.Patient.PatientServiceTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Patient.PatientServiceTest]/[method:whenCountCalled_countCallReported_withMethodName()] (20 ms)</li><li>com.marand.medAPI.Disease.DiseaseControllerTest.[engine:junit-jupiter]/[class:com.marand.medAPI.Disease.DiseaseControllerTest]/[method:givenValidIdAndValidDto_whenPosted_UpdatesEntity()] (48 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.6.7
+
+</body>
+</html>

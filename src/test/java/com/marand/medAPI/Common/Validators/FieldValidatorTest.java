@@ -31,6 +31,11 @@ class FieldValidatorTest {
   }
 
   @Test
+  void givenNullField_whenCheckTypeEqualityCalled_ReturnsFalse() {
+    assertFalse(isSameType(null, "test"));
+  }
+
+  @Test
   void givenEqualTypeFieldAndObject_whenCheckTypeEqualityCalled_ReturnsTrue()
       throws NoSuchFieldException {
     Field field = MockEntity.class.getDeclaredField("email");
@@ -88,7 +93,7 @@ class FieldValidatorTest {
   }
 
   @Test
-  void givenPrimitive_inParamMap_withValue_whenCheckNotDefaultCalled_returnsTrue() {
+  void givenPrimitive_inParamMap_withValue_whenCheckNotDefaultCalled_returnsFalse() {
 
     byte b = 1;
     assertFalse(isDefaultValue("Byte", b));
@@ -109,12 +114,24 @@ class FieldValidatorTest {
   }
 
   @Test
+  void givenDefaultId_whenIsDefaultValueCalled_returnsTrue() {
+    Long l = -5L;
+    assertTrue(isDefaultValue("id", l));
+  }
+
+  @Test
+  void givenNonDefaultId_whenIsDefaultValueCalled_returnsFalse() {
+    Long l = 0L;
+    assertFalse(isDefaultValue("id", l));
+  }
+
+  @Test
   void givenObject_inParamMap_withValue_returnsTrue() {
     assertFalse(isDefaultValue("object", "object"));
   }
 
   @Test
-  void givenPrimitive_inParamMap_withDefaultValue_whenCheckNotDefaultCalled_returnsFalse() {
+  void givenPrimitive_inParamMap_withDefaultValue_whenCheckNotDefaultCalled_returnsTrue() {
 
     byte b = 0;
     assertTrue(isDefaultValue("Byte", b));
