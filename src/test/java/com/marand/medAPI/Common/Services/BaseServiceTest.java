@@ -64,6 +64,5 @@ public abstract class BaseServiceTest<E extends BaseDataObject> {
         () -> {
           service.findOne(entity.getId());
         });
-
   }
 }

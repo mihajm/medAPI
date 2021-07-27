@@ -7,22 +7,25 @@ import com.marand.medAPI.Report.ReportService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public abstract class ReportedServiceTest<E extends BaseDataObject, DTO extends BaseDTO>
     extends UpdaterServiceTest<E, DTO> {
 
-  @Autowired private ReportService reportService;
-
+  private ReportService reportService;
   private ReportedService<E, DTO> service;
 
-  protected ReportedServiceTest(ReportedService<E, DTO> service) {
+  protected ReportedServiceTest(ReportedService<E, DTO> service, ReportService reportService) {
     super(service);
     this.service = service;
+    this.reportService = reportService;
   }
 
   protected abstract DTO createAnotherDTO();
@@ -89,26 +92,24 @@ public abstract class ReportedServiceTest<E extends BaseDataObject, DTO extends 
   }
 
   @Test
+  @Transactional(noRollbackFor = EntityNotFoundException.class)
   void whenFindOneCalledOnInValidEntity_isThrownAndReported() {
-
-    assertThrows(
-        EntityNotFoundException.class,
-        () -> {
-          service.findOne(5999L);
-          assertEquals(1, reportService.count());
-        });
+    try {
+      service.findOne(59999L);
+    } catch (EntityNotFoundException e) {
+      assertEquals(1, reportService.count());
+    }
   }
 
   @Test
-  void whenFindOneCalledOnInValidEntity_findOneCallReported_withThrownNotFoundException() {
-
-    assertThrows(
-        EntityNotFoundException.class,
-        () -> {
-          service.findOne(5999L);
-          Report report = reportService.findByMethodName("findOne").get(0);
-          assertEquals(EntityNotFoundException.class, report.getException().getLeft());
-        });
+  @Transactional(noRollbackFor = EntityNotFoundException.class)
+  void whenFindOneThrown_throwReportedWithExceptionClass() {
+    try {
+      service.findOne(59999L);
+    } catch (EntityNotFoundException e) {
+      Report report = reportService.findByMethodName("findOne").get(0);
+      assertEquals(e.getClass(), report.getException().getLeft());
+    }
   }
 
   @Test
@@ -134,5 +135,4 @@ public abstract class ReportedServiceTest<E extends BaseDataObject, DTO extends 
     service.remove(entity.getId());
     assertEquals(1, reportService.findByMethodName("remove").size());
   }
-
 }

@@ -31,7 +31,7 @@ public abstract class BaseService<E extends BaseDataObject> {
 
   @Transactional
   public void remove(long id) {
-      repo.deleteById(id);
+    repo.deleteById(id);
   }
 
   @Transactional(propagation = Propagation.REQUIRES_NEW)

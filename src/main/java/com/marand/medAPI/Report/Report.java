@@ -5,6 +5,7 @@ import com.marand.medAPI.Common.Objects.BaseDataObject;
 import org.apache.commons.lang3.tuple.Pair;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,24 +17,27 @@ public class Report extends GeneratedIdEntity {
   private Date startTime = new Date();
   private HashMap<Long, String> entities = new HashMap<Long, String>();
   private String methodName;
+
+  @Lob
   private Pair<Class<? extends Throwable>, String> exception;
 
-  public Report() {
-    startTime = new Date();
-  }
+  public Report() {}
 
   public Report(String methodName) {
     setMethodName(methodName);
   }
 
-  public Report(HashMap<Long, String> entities, String methodName, Pair<Class<? extends Throwable>, String> exception) {
-    startTime = new Date();
+  public Report(
+      HashMap<Long, String> entities,
+      String methodName,
+      Pair<Class<? extends Throwable>, String> exception) {
     setEntities(entities);
     setMethodName(methodName);
     setException(exception);
   }
 
-  public Report(List<BaseDataObject> entities, String methodName, Pair<Class<? extends Throwable>, String> exception) {
+  public Report(
+      List<BaseDataObject> entities, String methodName, Pair<Class<? extends Throwable>, String> exception) {
     setEntities(entities);
     setMethodName(methodName);
     setException(exception);

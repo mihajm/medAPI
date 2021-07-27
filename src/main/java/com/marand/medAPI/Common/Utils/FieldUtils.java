@@ -15,7 +15,8 @@ import java.lang.reflect.Field;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.marand.medAPI.Common.Validators.FieldValidator.*;
+import static com.marand.medAPI.Common.Validators.FieldValidator.isDefaultValue;
+import static com.marand.medAPI.Common.Validators.FieldValidator.isReflectableCollection;
 
 public class FieldUtils {
 
@@ -23,11 +24,15 @@ public class FieldUtils {
     return List.of(clazz.getDeclaredFields());
   }
 
+  private static List<Field> mergeLists(List<Field> outList, List<Field> mergeList) {
+    outList.addAll(mergeList);
+    return outList;
+  }
+
   public static List<Field> getAllDeclaredFields(Class<?> clazz) {
     List<Field> fields = new ArrayList(getDeclaredFields(clazz));
     if (clazz.getSuperclass() == null) return fields;
-    fields.addAll(getAllDeclaredFields(clazz.getSuperclass()));
-    return fields;
+    return mergeLists(fields, getAllDeclaredFields(clazz.getSuperclass()));
   }
 
   private static List<Field> getAllDeclaredFields(Object object) {
@@ -45,7 +50,7 @@ public class FieldUtils {
   }
 
   public static Map<String, Object> readFields(Object provider) {
-    Map<String, Object> fields = new HashMap();
+    Map<String, Object> fields = new HashMap<String, Object>();
     getAllDeclaredFields(provider)
         .forEach(
             (field) ->
@@ -56,9 +61,11 @@ public class FieldUtils {
 
   public static void writeField(Object target, String fieldName, Object value) {
     if (isDefaultValue(fieldName, value)) return;
+
     try {
       PropertyAccessorFactory.forBeanPropertyAccess(target)
           .setPropertyValue(new StringValidator(fieldName).hasValue(), value);
+
     } catch (TypeMismatchException | NotWritablePropertyException ignored) {
     }
   }
@@ -86,15 +93,18 @@ public class FieldUtils {
       E target, String fieldName, Collection<DTO> DTOs, UpdaterService<E, DTO> service) {
 
     PropertyAccessorFactory.forBeanPropertyAccess(target)
-        .setPropertyValue(fieldName, DTOs.stream().map(service::entityFrom).collect(Collectors.toSet()));
+        .setPropertyValue(
+            fieldName, DTOs.stream().map(service::entityFrom).collect(Collectors.toSet()));
   }
 
   @SuppressWarnings("unchecked")
   public static <E extends BaseDataObject, DTO extends BaseDTO> void writeEntityField(
       E target, Field field, DTO provider, UpdaterService<E, DTO> service) {
+
     Optional<Object> value = readField(provider, field.getName());
-    if (value.isEmpty()) return;
-    if (isReflectableCollection(value.get()))
-      writeEntityCollection(target, field.getName(), (Collection<DTO>) value.get(), service);
+
+    if (value.isEmpty() || !isReflectableCollection(value.get())) return;
+
+    writeEntityCollection(target, field.getName(), (Collection<DTO>) value.get(), service);
   }
 }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.ThrowingSupplier;
 
-import javax.persistence.Lob;
+import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,9 +23,7 @@ class ReportTest extends GeneratedIdEntityTest {
   Long entityId = 5L;
   HashMap<Long, String> entities = new HashMap<Long, String>(Map.of(entityId, entityName));
 
-  @Lob
-  Pair<Class<? extends Throwable>, String> exception =
-      new ImmutablePair<Class<? extends Throwable>, String>(RuntimeException.class, "message");
+  Pair<Class<? extends Throwable>, String> exception = new ImmutablePair<Class<? extends Throwable>, String>(EntityNotFoundException.class, "message");
   String methodName = "findOne";
 
   Report report = new Report(entities, methodName, exception);
@@ -65,6 +63,7 @@ class ReportTest extends GeneratedIdEntityTest {
   void whenConstructedWithAllArgs_hasArgs() {
     assertTrue(report.getEntities().containsKey(entityId));
     assertEquals(entityName, report.getEntities().get(entityId));
+    assertEquals(methodName, report.getMethodName());
     assertEquals(exception, report.getException());
     assertNotNull(report.getStartTime());
   }
@@ -72,7 +71,9 @@ class ReportTest extends GeneratedIdEntityTest {
   @Test
   void canBeConstructedWithEntityAsArgs() {
     assertDoesNotThrow(
-        () -> new Report(List.of(new Disease(50L, "a_disease")), methodName, exception));
+        () ->
+            new Report(
+                List.of(new Disease(50L, "a_disease")), methodName, exception));
   }
 
   @Test
@@ -88,7 +89,9 @@ class ReportTest extends GeneratedIdEntityTest {
 
     assertTrue(report.getEntities().containsKey(disease.getId()));
     assertEquals(disease.getClass().getName(), report.getEntities().get(disease.getId()));
+    assertEquals(methodName, report.getMethodName());
     assertEquals(exception, report.getException());
+    assertNotNull(report.getStartTime());
   }
 
   @Test
@@ -109,8 +112,7 @@ class ReportTest extends GeneratedIdEntityTest {
 
   @Test
   void setException() {
-    Pair<Class<? extends Throwable>, String> newException =
-        new ImmutablePair<Class<? extends Throwable>, String>(RuntimeException.class, "message");
+    Pair<Class<? extends Throwable>, String> newException = new ImmutablePair<Class<? extends Throwable>, String>(RuntimeException.class, "message");
     report.setException(newException);
     assertEquals(newException, report.getException());
   }

@@ -43,5 +43,4 @@ public abstract class ReportedService<E extends BaseDataObject, DTO extends Base
   public void remove(long id) {
     super.remove(id);
   }
-
 }

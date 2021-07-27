@@ -34,7 +34,6 @@ public abstract class BaseDataObjectTest {
 
     @Test
     void toString_returnsAllFieldsAndValues() {
-        System.out.println(entity.toString());
         String entityString = entity.toString();
         assertTrue(entityString.contains("id"));
         assertTrue(entityString.contains(String.valueOf(entity.getId())));

@@ -15,6 +15,7 @@ public class FieldValidator {
   }
 
   public static boolean isSameType(Field field, Object param) {
+    if (field == null) return false;
     if (param == null) return true;
     Class<?> fieldType = field.getType();
     Class<?> paramClass = param.getClass();

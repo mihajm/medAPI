@@ -7,8 +7,10 @@ import com.marand.medAPI.Disease.DiseaseService;
 import com.marand.medAPI.Patient.Patient;
 import com.marand.medAPI.Patient.PatientDTO;
 import com.marand.medAPI.Patient.PatientService;
+import com.marand.medAPI.Report.ReportService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,8 +38,8 @@ class DoctorServiceTest extends ReportedServiceTest<Doctor, DoctorDTO> {
   private DoctorDTO dto;
 
   @Autowired
-  protected DoctorServiceTest(DoctorService service) {
-    super(service);
+  protected DoctorServiceTest(DoctorService service, ReportService reportService) {
+    super(service, reportService);
     this.service = service;
   }
 

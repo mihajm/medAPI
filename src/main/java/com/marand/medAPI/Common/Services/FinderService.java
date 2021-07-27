@@ -8,7 +8,6 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
 public abstract class FinderService<E extends BaseDataObject> extends BaseService<E> {
   private final JpaRepository<E, Long> repo;
 
@@ -21,10 +20,12 @@ public abstract class FinderService<E extends BaseDataObject> extends BaseServic
     return repo.findById(id);
   }
 
+  @Transactional
   public E findOne(long id) {
     return findOneOptional(id).orElseThrow(EntityNotFoundException::new);
   }
 
+  @Transactional
   public List<E> findAll() {
     return repo.findAll();
   }

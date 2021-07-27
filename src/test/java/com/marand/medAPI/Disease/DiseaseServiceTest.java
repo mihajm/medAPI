@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -16,17 +17,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class DiseaseServiceTest extends ReportedServiceTest<Disease, DiseaseDTO> {
 
-  @Autowired private ReportService reportService;
-
   private String name = "good_at_tests";
   private DiseaseDTO dto = createDTO();
 
   private DiseaseService service;
+  private ReportService reportService;
 
   @Autowired
-  protected DiseaseServiceTest(DiseaseService service) {
-    super(service);
+  protected DiseaseServiceTest(DiseaseService service, ReportService reportService) {
+    super(service, reportService);
     this.service = service;
+    this.reportService = reportService;
   }
 
   protected DiseaseDTO createDTO() {
@@ -138,25 +139,23 @@ class DiseaseServiceTest extends ReportedServiceTest<Disease, DiseaseDTO> {
   }
 
   @Test
+  @Transactional(noRollbackFor = EntityNotFoundException.class)
   void whenFindOneCalledOnInValidEntity_isThrownAndReported() {
-
-    assertThrows(
-        EntityNotFoundException.class,
-        () -> {
-          service.findOneByName("this_name_is_not_stored");
-          assertEquals(1, reportService.count());
-        });
+    try {
+      service.findOneByName("this_name_is_not_stored");
+    } catch (EntityNotFoundException e) {
+      assertEquals(1, reportService.count());
+    }
   }
 
   @Test
+  @Transactional(noRollbackFor = EntityNotFoundException.class)
   void whenFindOneCalledOnInValidEntity_findOneCallReported_withThrownNotFoundException() {
-
-    assertThrows(
-        EntityNotFoundException.class,
-        () -> {
-          service.findOneByName("this_name_not_stored");
-          Report report = reportService.findByMethodName("findOneByName").get(0);
-          assertEquals(EntityNotFoundException.class, report.getException().getLeft());
-        });
+    try {
+      service.findOneByName("this_name_is_not_stored");
+    } catch (EntityNotFoundException e) {
+      Report report = reportService.findByMethodName("findOneByName").get(0);
+      assertEquals(e.getClass(), report.getException().getLeft());
+    }
   }
 }

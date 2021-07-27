@@ -2,9 +2,9 @@ package com.marand.medAPI.Report;
 
 import com.marand.medAPI.Common.Objects.BaseDataObject;
 import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,24 +21,17 @@ public class ReportAspect {
 
   @Autowired private ReportService service;
 
-  @Around("@annotation(Reported)")
-  public Object report(ProceedingJoinPoint joinPoint) throws Throwable {
-    return reportSuccessOrFailure(joinPoint, createReport(getMethodName(joinPoint)));
+  @AfterReturning(value = "@annotation(Reported)", returning = "returnValue")
+  public void report(JoinPoint joinPoint, Object returnValue) {
+    reportSuccess(returnValue, createReport(getMethodName(joinPoint)));
   }
 
-  private Object reportSuccessOrFailure(ProceedingJoinPoint joinPoint, Report report)
-      throws Throwable {
-    try {
-      return reportSuccess(joinPoint, report);
-    } catch (Throwable e) {
-      reportFailure(e, report);
-      throw e;
-    } finally {
-      service.saveOne(report);
-    }
+  @AfterThrowing(value = "@annotation(Reported)", throwing = "ex")
+  public void reportThrow(JoinPoint joinPoint, Throwable ex) {
+    reportFailure(ex, createReport(getMethodName(joinPoint)));
   }
 
-  private String getMethodName(ProceedingJoinPoint joinPoint) {
+  private String getMethodName(JoinPoint joinPoint) {
     return joinPoint.getSignature().getName();
   }
 
@@ -47,19 +40,18 @@ public class ReportAspect {
   }
 
   @SuppressWarnings("unchecked")
-  private Object reportSuccess(ProceedingJoinPoint joinPoint, Report report) throws Throwable {
-    Object retVal = joinPoint.proceed();
+  private void reportSuccess(Object retVal, Report report) {
     if (isEntityCollection(retVal))
       report.setEntities(List.copyOf((Collection<? extends BaseDataObject>) retVal));
+
     if (isEntity(retVal)) report.addEntity((BaseDataObject) retVal);
-    return retVal;
+
+    service.saveOne(report);
   }
 
   private void reportFailure(Throwable e, Report report) {
-    report.setException(exceptionClassAndMessage(e));
-  }
-
-  private Pair<Class<? extends Throwable>, String> exceptionClassAndMessage(Throwable e) {
-    return new ImmutablePair<Class<? extends Throwable>, String>(e.getClass(), e.getMessage());
+    report.setException(
+        new ImmutablePair<Class<? extends Throwable>, String>(e.getClass(), e.getMessage()));
+    service.saveOne(report);
   }
 }
