@@ -54,4 +54,28 @@ class ReportServiceTest extends FinderServiceTest<Report> {
   void findByMethodName_returnsEmptyListWhenDBEmpty() {
     assertTrue(service.findByMethodName(methodName).isEmpty());
   }
+
+  @Test
+  void whenFindByMethodNameCalled_findByMethodNameCallReported_withMethodName() {
+    service.saveOne(new Report("method"));
+    service.findByMethodName("method");
+    assertEquals(1, service.findByMethodName("findByMethodName").size());
+  }
+
+  @Test
+  void whenFindByMethodNameCalled_findByMethodNameCallReported_withReturnedEntities() {
+    Report savedReport = service.saveOne(new Report("method"));
+    Report anotherReport = service.saveOne(new Report("method"));
+
+    service.findByMethodName("method");
+
+    Report report = service.findByMethodName("findByMethodName").get(0);
+
+    assertTrue(report.getEntities().containsKey(savedReport.getId()));
+    assertEquals(savedReport.getClass().getName(), report.getEntities().get(savedReport.getId()));
+
+    assertTrue(report.getEntities().containsKey(anotherReport.getId()));
+    assertEquals(
+            anotherReport.getClass().getName(), report.getEntities().get(anotherReport.getId()));
+  }
 }
