@@ -90,7 +90,6 @@ public abstract class ReportedServiceTest<E extends BaseDataObject, DTO extends 
   }
 
   @Test
-  @Transactional(noRollbackFor = EntityNotFoundException.class)
   void whenFindOneCalledOnInValidEntity_isThrownAndReported() {
     try {
       service.findOne(59999L);
@@ -100,7 +99,6 @@ public abstract class ReportedServiceTest<E extends BaseDataObject, DTO extends 
   }
 
   @Test
-  @Transactional(noRollbackFor = EntityNotFoundException.class)
   void whenFindOneThrown_throwReportedWithExceptionClass() {
     try {
       service.findOne(59999L);
